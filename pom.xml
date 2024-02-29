@@ -20,10 +20,7 @@
 		    <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 		    <version>1.16</version>
 		</dependency>
-		
-		
-		
-		
+
 	<!--  퍼시스턴스 (sql 매핑 추가) 프레임워크 추가 -->
 	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
@@ -47,19 +44,14 @@
 		    <artifactId>spring-tx</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-		
-		
-				<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-		
-		
-			
-	
-	
+
 		<dependency>
 		   <groupId>com.zaxxer</groupId>
 		   <artifactId>HikariCP</artifactId>
@@ -72,8 +64,7 @@
 		    <artifactId>ojdbc8</artifactId>
 		    <version>12.2.0.1</version>
 		</dependency>
-				
-	
+
 		<!-- 스프링 테스트를 하기위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
@@ -88,9 +79,7 @@
 		    <version>1.18.28</version>
 		    <scope>provided</scope>
 		</dependency>
-	
-	
-	
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -104,10 +93,7 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
-		
-		
-		
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
