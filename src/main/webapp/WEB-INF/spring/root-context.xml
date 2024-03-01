@@ -16,5 +16,9 @@
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"/>
+	</bean>
+
 
 </beans>
