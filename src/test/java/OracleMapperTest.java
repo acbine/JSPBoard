@@ -24,6 +24,7 @@ public class OracleMapperTest {
     public void O2Test(){
         oracleMapper.sysdate();
         System.out.println("안녕");
+        log.info("이런젠장");
     }
 
 }
