@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<%--헤더 파일 넣기 --%>
+<%--헤더 파일 :list.jsp를 읽기전에 템플릿?을 먼저 불러옴 --%>
 <%@ include file="includes/header.jsp" %>
     
         <div id="page-wrapper">
@@ -79,7 +79,7 @@
                             </div>
                             <!-- /.modal -->
 
-<%--footer 파일 넣기 --%>
+<%--footer /.modal까지 읽고나서 스크립트 파일을넣어줌 --%>
 <%@ include file="includes/footer.jsp" %>
 
 </body>

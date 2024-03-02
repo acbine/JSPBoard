@@ -13,17 +13,20 @@
 		<property name="username" value="c##BOARD"/>
 		<property name="password" value="1234"/>
 	</bean>
+<!--hikariConfig bean을 생성 안에있는 정보는 property로설정 	-->
 
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
+	<!--hikariConfig bean을 참고 하여  datasource bean을 생성	-->
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource"/>
 	</bean>
+	<!--datasource bean을 참고 하여  sqlSessionFactory bean을 생성	-->
 
 	<mybatis-spring:scan base-package="board.study.mapper"/>
-
+	<!--Xml을 기반으로한 마이바티스?쿼리?를 사용하기위해 Scan? 추가함	-->
 
 
 
