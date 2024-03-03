@@ -17,7 +17,7 @@ public class BoardServiceImpl implements BoardService {
     OracleMapper oracleMapper;
     @Override
     public void boardServiceRegister(BoardDTO boardDTO) {
-
+        oracleMapper.boardRegister(boardDTO);
     }
 
     @Override

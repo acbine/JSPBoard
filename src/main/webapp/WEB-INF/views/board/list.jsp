@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            게시글 목록 보기(<a href="register">게시글 쓰기</a>)
+                            게시글 목록 보기(<a href="openRegister">게시글 쓰기</a>)
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
