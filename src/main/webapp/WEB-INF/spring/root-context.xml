@@ -2,8 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+    xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-						http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
+						http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
@@ -28,6 +30,7 @@
 	<mybatis-spring:scan base-package="board.study.mapper"/>
 	<!--Xml을 기반으로한 마이바티스?쿼리?를 사용하기위해 Scan? 추가함	-->
 
-
+	<context:component-scan base-package="board.study.service" />
+	<!--의존성 주입을 위한 Scan? 추가함	-->
 
 </beans>

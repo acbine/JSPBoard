@@ -41,4 +41,9 @@ public class OracleMapperTest {
         oracleMapper.boardUpdate(boardDTO);
     }
 
+    @Test
+    public void listTest(){
+        oracleMapper.boardList();
+    }
+
 }

@@ -32,13 +32,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="center"></td>
-                                        <td class="center"></td>
-                                    </tr>
+                                    <c:forEach items="${boardList}" var="board">
+                                        <tr>
+                                            <td>${board.bno}</td>
+                                            <td>${board.title}</td>
+                                            <td>${board.writer}</td>
+                                            <td class="center">${board.regdate}</td>
+                                            <td class="center">${board.updatedate}</td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
 

@@ -17,8 +17,8 @@
         update  TABLE_BOARD set title=#{title}, content=#{content}, updatedate=sysdate where bno=#{bno}
     </update>
 
-    <select id="allList">
-        select bno,title,content,writer,to_char(regdate,'YY/MM/DD-HH24:MI'),to_char(updatedate,'YY/MM/DD-HH24:MI:SS') from TABLE_BOARD;
+    <select id="boardList" resultType="board.study.boardDTO.BoardDTO">
+        select bno,title,content,writer,regdate,updatedate from TABLE_BOARD order by bno desc
     </select>
 
 </mapper>

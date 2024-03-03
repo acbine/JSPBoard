@@ -16,4 +16,9 @@
     <update id="boardUpdate">
         update  TABLE_BOARD set title=#{title}, content=#{content}, updatedate=sysdate where bno=#{bno}
     </update>
+
+    <select id="boardList" resultType="board.study.boardDTO.BoardDTO">
+        select bno,title,content,writer,regdate,updatedate from TABLE_BOARD order by bno desc
+    </select>
+
 </mapper>
