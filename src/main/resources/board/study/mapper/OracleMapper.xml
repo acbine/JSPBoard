@@ -21,4 +21,8 @@
         select bno,title,content,writer,regdate,updatedate from TABLE_BOARD order by bno desc
     </select>
 
+    <select id="boardViewDetail" resultType="board.study.boardDTO.BoardDTO">
+        select bno,title,content,writer,regdate,updatedate from TABLE_BOARD where bno=#{bno} order by bno desc
+    </select>
+
 </mapper>

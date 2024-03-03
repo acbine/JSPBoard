@@ -21,8 +21,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void boardServiceDelete(BoardDTO boardDTO) {
-
+    public void boardServiceDelete(Long bno) {
+        oracleMapper.boardDelete(bno);
     }
 
     @Override
@@ -34,5 +34,10 @@ public class BoardServiceImpl implements BoardService {
     public List<BoardDTO> boardServiceList() {
         List<BoardDTO> returnList = oracleMapper.boardList();
         return returnList;
+    }
+
+    @Override
+    public BoardDTO boardServiceViewDetail(Long bno) {
+        return oracleMapper.boardViewDetail(bno);
     }
 }

@@ -5,12 +5,19 @@ import board.study.boardDTO.BoardDTO;
 import java.util.List;
 
 public interface BoardService {
-    //등록
+    
     void boardServiceRegister(BoardDTO boardDTO);
+    //등록
+    
+    void boardServiceDelete(Long bno);
     //삭제
-    void boardServiceDelete(BoardDTO boardDTO);
-    //수정
+    
     void boardServiceUpdate (Long bno);
-    //일기
+    //수정
+    
     List<BoardDTO> boardServiceList();
+    //읽기
+    
+    BoardDTO boardServiceViewDetail(Long bno);
+    //상세보기
 }

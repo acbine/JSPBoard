@@ -46,4 +46,8 @@ public class OracleMapperTest {
         oracleMapper.boardList();
     }
 
+    @Test
+    public void viewDetailTest(){
+        oracleMapper.boardViewDetail(25L);
+    }
 }

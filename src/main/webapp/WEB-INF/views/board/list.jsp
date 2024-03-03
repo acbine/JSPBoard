@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%--헤더 파일 :list.jsp를 읽기전에 템플릿?을 먼저 불러옴 --%>
-<%@ include file="includes/header.jsp" %>
+<%@ include file="../includes/header.jsp" %>
     
         <div id="page-wrapper">
             <div class="row">
@@ -32,13 +32,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${boardList}" var="board">
+                                    <c:forEach items="${boardList}" var="boardList">
                                         <tr>
-                                            <td>${board.bno}</td>
-                                            <td>${board.title}</td>
-                                            <td>${board.writer}</td>
-                                            <td class="center">${board.regdate}</td>
-                                            <td class="center">${board.updatedate}</td>
+                                            <td>${boardList.bno}</td>
+                                            <td style="width: 60%;"><a href="/board/viewDetail/${boardList.bno}">${boardList.title}</a></td>
+                                            <td>${boardList.writer}</td>
+                                            <td><fmt:formatDate value="${boardList.regdate}" pattern="yyyy년MM월dd일"/> </td>
+                                            <td><fmt:formatDate value="${boardList.updatedate}" pattern="yyyy년MM월dd일"/> </td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -82,7 +82,7 @@
                             <!-- /.modal -->
 
 <%--footer /.modal까지 읽고나서 스크립트 파일을넣어줌 --%>
-<%@ include file="includes/footer.jsp" %>
+<%@ include file="../includes/footer.jsp" %>
 
 </body>
 

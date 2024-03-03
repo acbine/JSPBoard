@@ -19,4 +19,7 @@ public interface OracleMapper {
 
     List<BoardDTO> boardList();
     //DB에있는 모든 리스트 불러오기
+    
+    BoardDTO boardViewDetail(Long bno);
+    //정보 하나 불러오기
 }
