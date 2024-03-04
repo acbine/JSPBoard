@@ -67,12 +67,29 @@
 
     function send(){
         console.log("전송버튼클릭")
+
+        var aaa=$('#${boardDetail.bno}title').val();
+        var bbb=$("#${boardDetail.bno}content").val();
+        var ccc = ${boardDetail.bno};
+        $.ajax({
+            url: '/board/update/?bno='+ccc+'&title='+aaa+'&content='+bbb,
+            method: 'post',
+            success: function(response) {
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+            }
+        });
+
+        console.log(aaa);
+        console.log(bbb);
+        console.log(ccc);
     }
 
 
     function update() {
             console.log("수정버튼클릭");
-            $("#${boardDetail.bno}title").replaceWith("<textarea class='form-control' id='${boardDetail.bno}title'></textarea>");
+            $("#${boardDetail.bno}title").replaceWith("<textarea class='form-control' id='${boardDetail.bno}title'>${boardDetail.title}</textarea>");
             $("#${boardDetail.bno}content").removeAttr("readonly");
             $("#${boardDetail.bno}delete").replaceWith("<button type='button' class='btn btn-success'  id='${boardDetail.bno}cancel' onclick='cancel()' style='float: right;'>취소</button>");
             $("#${boardDetail.bno}modify").replaceWith("<button type='button' class='btn btn-info'  id='${boardDetail.bno}send' onclick='send()' style='float: right;'>수정완료</button>");

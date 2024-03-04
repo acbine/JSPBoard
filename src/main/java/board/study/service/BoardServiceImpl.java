@@ -26,7 +26,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void boardServiceUpdate(Long bno) {
+    public void boardServiceUpdate(BoardDTO boardDTO) {
+        oracleMapper.boardUpdate(boardDTO);
 
     }
 

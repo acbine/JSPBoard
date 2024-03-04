@@ -12,7 +12,7 @@ public interface BoardService {
     void boardServiceDelete(Long bno);
     //삭제
     
-    void boardServiceUpdate (Long bno);
+    void boardServiceUpdate (BoardDTO boardDTO);
     //수정
     
     List<BoardDTO> boardServiceList();

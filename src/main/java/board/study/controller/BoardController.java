@@ -51,4 +51,15 @@ public class BoardController {
         boardService.boardServiceDelete(bno);
         return  "redirect:/board/list";
     }
+
+    @PostMapping("/board/update")
+    public String update(BoardDTO boardDTO ,Model model){
+        log.info("수정요청");
+        log.info(boardDTO);
+        boardService.boardServiceUpdate(boardDTO);
+        model.addAttribute("boardDetail",boardService.boardServiceViewDetail(boardDTO.getBno()));
+        log.info(boardService.boardServiceViewDetail(boardDTO.getBno()));
+        return  "redirect: /board/viewDetail/"+boardDTO.getBno();
+    }
+
 }
