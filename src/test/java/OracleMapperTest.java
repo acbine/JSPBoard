@@ -50,4 +50,9 @@ public class OracleMapperTest {
     public void viewDetailTest(){
         oracleMapper.boardViewDetail(25L);
     }
+
+    @Test
+    public void searchTest(){
+        oracleMapper.boardSearchList("한","writer");
+    }
 }

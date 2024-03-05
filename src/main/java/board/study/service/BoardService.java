@@ -20,4 +20,7 @@ public interface BoardService {
     
     BoardDTO boardServiceViewDetail(Long bno);
     //상세보기
+
+    List<BoardDTO> boardServiceSearchList(String searchWord , String type);
+    //읽기
 }

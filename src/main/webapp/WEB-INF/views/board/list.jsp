@@ -11,6 +11,20 @@
                 <div class="col-lg-12">
                     <h1 class="page-header"><i class="fa fa-list-ul"></i> 게시판</h1>
                 </div>
+                <div id="searchArea">
+                    <!-- 검색바 시작 -->
+                    <form action="/board/search" method="get">
+                        <input type="text" name="searchWord" id="searchWord">
+                        <select name="type">
+                            <option value="all" >전체</option>
+                            <option value="title"  >제목</option>
+                            <option value="content"  >내용</option>
+                            <option value="writer">작성자</option>
+                        </select>
+                        <button type="submit" class="btn btn-default">검색</button>
+                    </form>
+                    <!-- 검색바 끝 -->
+                </div>
             </div>
 
             <div class="row">
@@ -18,6 +32,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             게시글 목록 보기(<a href="openRegister">게시글 쓰기</a>)
+                            sda
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

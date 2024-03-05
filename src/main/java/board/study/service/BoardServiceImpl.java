@@ -41,4 +41,9 @@ public class BoardServiceImpl implements BoardService {
     public BoardDTO boardServiceViewDetail(Long bno) {
         return oracleMapper.boardViewDetail(bno);
     }
+
+    @Override
+    public List<BoardDTO> boardServiceSearchList(String searchWord , String type) {
+        return oracleMapper.boardSearchList(searchWord,type);
+    }
 }

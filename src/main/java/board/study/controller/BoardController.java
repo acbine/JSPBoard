@@ -62,4 +62,13 @@ public class BoardController {
         return  "redirect: /board/viewDetail/"+boardDTO.getBno();
     }
 
+    @GetMapping("/board/search")
+    public String search(String searchWord , String type ,Model model){
+        log.info("검색된것");
+        log.info(searchWord+type);
+        model.addAttribute("boardList",boardService.boardServiceSearchList(searchWord,type));
+        log.info(boardService.boardServiceSearchList(searchWord,type));
+        return  "/board/list";
+    }
+
 }
