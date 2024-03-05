@@ -1,6 +1,7 @@
 package board.study.mapper;
 
 import board.study.boardDTO.BoardDTO;
+import board.study.boardDTO.PageDTO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -26,4 +27,6 @@ public interface OracleMapper {
 
     List<BoardDTO> boardSearchList(@Param("searchWord") String searchWord,  @Param("type")String type);
     //검색된 정보 불러오기
+
+    List<BoardDTO> boardPage(PageDTO pageDTO);
 }

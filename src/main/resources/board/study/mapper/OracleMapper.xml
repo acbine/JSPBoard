@@ -44,6 +44,22 @@
                 title like '%' ||#{searchWord}|| '%'
             </if>
         </where>
+        order by bno desc
     </select>
+
+
+    <select id="boardPage" resultType="board.study.boardDTO.BoardDTO">
+    <![CDATA[
+        select bno,title,content,writer,regdate,updatedate
+        from(
+            select /*+INDEX_DESC(TABLE_BOARD TABLE_BOARD_PK)*/
+            Rownum as Rnum ,bno,title,content,writer,regdate,updatedate
+            from table_board
+            where Rownum <= #{pageNum}* #{amount}
+            )
+        where Rnum <= (#{pageNum}-1) * #{amount}
+        ]]>
+    </select>
+
 
 </mapper>

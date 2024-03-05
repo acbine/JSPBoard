@@ -1,4 +1,5 @@
 import board.study.boardDTO.BoardDTO;
+import board.study.boardDTO.PageDTO;
 import board.study.mapper.OracleMapper;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -6,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -23,7 +26,7 @@ public class OracleMapperTest {
             BoardDTO boardDTO = new BoardDTO();
             boardDTO.setTitle("등록테스트코드(제목)"+i);
             boardDTO.setContent("등록테스트코드(내용)"+i);
-            boardDTO.setWriter("등록(작성자)"+i);
+            boardDTO.setWriter("작성자"+i);
             oracleMapper.boardRegister(boardDTO);
         }
     }
@@ -54,5 +57,11 @@ public class OracleMapperTest {
     @Test
     public void searchTest(){
         oracleMapper.boardSearchList("한","writer");
+    }
+
+    @Test
+    public void pageTest(){
+        PageDTO pageDTO = new PageDTO(3,2); //  3페이지 * 3개씩 총갯수9개
+        List<BoardDTO> list = oracleMapper.boardPage(pageDTO);
     }
 }
