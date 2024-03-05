@@ -61,7 +61,7 @@ public class OracleMapperTest {
 
     @Test
     public void pageTest(){
-        PageDTO pageDTO = new PageDTO(3,2); //  3페이지 * 3개씩 총갯수9개
+        PageDTO pageDTO = new PageDTO(5,2); //  5페이지 * 2개씩 총갯수10개
         List<BoardDTO> list = oracleMapper.boardPage(pageDTO);
     }
 }

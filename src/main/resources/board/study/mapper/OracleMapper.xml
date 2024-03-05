@@ -57,7 +57,7 @@
             from table_board
             where Rownum <= #{pageNum}* #{amount}
             )
-        where Rnum <= (#{pageNum}-1) * #{amount}
+        where Rnum > (#{pageNum}-1) * #{amount}
         ]]>
     </select>
 
