@@ -32,7 +32,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             게시글 목록 보기(<a href="openRegister">게시글 쓰기</a>)
-                            sda
+
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -58,6 +58,16 @@
                                     </c:forEach>
                                 </tbody>
                             </table>
+                            <div>
+                                <ul class="pagination">
+                                    <c:forEach begin="${pagebar.startPage}" end="${pagebar.endPage}" var="num">
+                                        <li class="pagenate_button ${pagebar.pageDTO.pageNum == num ? 'active' : ''}">
+                                            <a href="/board/list?pageNum=${num}" >${num}</a>
+                                        </li>
+                                    </c:forEach>
+
+                                </ul>
+                            <div>
 
 
                         </div>

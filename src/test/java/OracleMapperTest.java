@@ -22,11 +22,11 @@ public class OracleMapperTest {
 
     @Test
     public void registerTest(){
-        for (int i=0; i<5; i++){
+        for (int i=0; i<=5; i++){
             BoardDTO boardDTO = new BoardDTO();
-            boardDTO.setTitle("등록테스트코드(제목)"+i);
-            boardDTO.setContent("등록테스트코드(내용)"+i);
-            boardDTO.setWriter("작성자"+i);
+            boardDTO.setTitle("등록테스트코드(제목)3");
+            boardDTO.setContent("등록테스트코드(내용)3");
+            boardDTO.setWriter("작성자3");
             oracleMapper.boardRegister(boardDTO);
         }
     }

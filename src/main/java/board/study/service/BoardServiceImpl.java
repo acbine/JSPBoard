@@ -1,6 +1,7 @@
 package board.study.service;
 
 import board.study.boardDTO.BoardDTO;
+import board.study.boardDTO.PageDTO;
 import board.study.mapper.OracleMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -45,5 +46,10 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<BoardDTO> boardServiceSearchList(String searchWord , String type) {
         return oracleMapper.boardSearchList(searchWord,type);
+    }
+
+    @Override
+    public List<BoardDTO> boardServicePage(PageDTO pageDTO) {
+        return oracleMapper.boardPage(pageDTO);
     }
 }

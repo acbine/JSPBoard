@@ -1,6 +1,7 @@
 package board.study.service;
 
 import board.study.boardDTO.BoardDTO;
+import board.study.boardDTO.PageDTO;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface BoardService {
     void boardServiceUpdate (BoardDTO boardDTO);
     //수정
     
-    List<BoardDTO> boardServiceList();
+    List<BoardDTO> boardServiceList(); //페이지 처리로인한 미사용ㅇ
     //읽기
     
     BoardDTO boardServiceViewDetail(Long bno);
@@ -23,4 +24,6 @@ public interface BoardService {
 
     List<BoardDTO> boardServiceSearchList(String searchWord , String type);
     //읽기
+
+    List<BoardDTO> boardServicePage(PageDTO pageDTO);
 }

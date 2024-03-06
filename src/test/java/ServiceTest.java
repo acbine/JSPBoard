@@ -16,6 +16,6 @@ public class ServiceTest {
 
     @Test
     public void listTest(){
-        boardService.boardServiceList();
+//        boardService.boardServiceList();
     }
 }

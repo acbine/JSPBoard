@@ -1,6 +1,8 @@
 package board.study.controller;
 
 import board.study.boardDTO.BoardDTO;
+import board.study.boardDTO.PageDTO;
+import board.study.boardDTO.PagebarDTO;
 import board.study.service.BoardService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +19,13 @@ public class BoardController {
     @Autowired
     BoardService boardService;
     @GetMapping("/board/list")
-    public void list(Model model) {
+    public void list(Model model, PageDTO pageDTO) {
         log.info("list url 요청");
-        model.addAttribute("boardList",boardService.boardServiceList());
+        log.info(pageDTO);
+        // URL의 파라미터가 없어도 pageDTO 기본값은 1페이지 10개씩
+//        model.addAttribute("boardList",boardService.boardServiceList()); //
+        model.addAttribute("boardList",boardService.boardServicePage(pageDTO)); //1페이지 내용 //문제없음
+        model.addAttribute("pagebar",new PagebarDTO(pageDTO,999)); //페이지바 //문제생김
     }
 
     @GetMapping("/board/openRegister")
