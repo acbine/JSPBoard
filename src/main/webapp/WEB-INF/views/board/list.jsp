@@ -60,11 +60,24 @@
                             </table>
                             <div>
                                 <ul class="pagination">
+
+                                    <c:if test="${pagebar.prev}">
+                                        <li class="pagenate_button">
+                                            <a href="/board/list?pageNum=${pagebar.startPage-1}" >&lt;</a>
+                                        </li>
+                                    </c:if>
+
                                     <c:forEach begin="${pagebar.startPage}" end="${pagebar.endPage}" var="num">
                                         <li class="pagenate_button ${pagebar.pageDTO.pageNum == num ? 'active' : ''}">
                                             <a href="/board/list?pageNum=${num}" >${num}</a>
                                         </li>
                                     </c:forEach>
+
+                                    <c:if test="${pagebar.next}">
+                                        <li class="pagenate_button">
+                                            <a href="/board/list?pageNum=${pagebar.endPage+1}" >&gt;</a>
+                                        </li>
+                                    </c:if>
 
                                 </ul>
                             <div>

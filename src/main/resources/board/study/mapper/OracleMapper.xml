@@ -62,4 +62,18 @@
     </select>
 
 
+    <select id="boardSearchPage" resultType="board.study.boardDTO.BoardDTO">
+
+        select bno,title,content,writer,regdate,updatedate
+        from(
+            select /*+INDEX_DESC(TABLE_BOARD TABLE_BOARD_PK)*/
+            Rownum as Rnum ,bno,title,content,writer,regdate,updatedate
+            from table_board
+            where Rownum &lt;= #{pageNum}* #{amount}
+            )
+        where Rnum &gt; (#{pageNum}-1) * #{amount}
+
+    </select>
+
+
 </mapper>

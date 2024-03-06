@@ -25,7 +25,7 @@ public class BoardController {
         // URL의 파라미터가 없어도 pageDTO 기본값은 1페이지 10개씩
 //        model.addAttribute("boardList",boardService.boardServiceList()); //
         model.addAttribute("boardList",boardService.boardServicePage(pageDTO)); //1페이지 내용 //문제없음
-        model.addAttribute("pagebar",new PagebarDTO(pageDTO,999)); //페이지바 //문제생김
+        model.addAttribute("pagebar",new PagebarDTO(pageDTO,28)); //페이지바 //문제생김
     }
 
     @GetMapping("/board/openRegister")
