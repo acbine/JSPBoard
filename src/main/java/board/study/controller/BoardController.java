@@ -25,7 +25,7 @@ public class BoardController {
         // URL의 파라미터가 없어도 pageDTO 기본값은 1페이지 10개씩
 //        model.addAttribute("boardList",boardService.boardServiceList()); //
         model.addAttribute("boardList",boardService.boardServicePage(pageDTO)); //1페이지 내용 //문제없음
-        model.addAttribute("pagebar",new PagebarDTO(pageDTO,28)); //페이지바 //문제생김
+        model.addAttribute("pagebar",new PagebarDTO(pageDTO,boardService.boardServiceBnoCount())); //페이지바 //문제생김
     }
 
     @GetMapping("/board/openRegister")
@@ -69,11 +69,14 @@ public class BoardController {
     }
 
     @GetMapping("/board/search")
-    public String search(String searchWord , String type ,Model model){
+    public String search(String searchWord , String type ,Model model ,PageDTO pageDTO){
         log.info("검색된것");
         log.info(searchWord+type);
-        model.addAttribute("boardList",boardService.boardServiceSearchList(searchWord,type));
-        log.info(boardService.boardServiceSearchList(searchWord,type));
+        log.info(pageDTO);
+//        model.addAttribute("boardList",boardService.boardServiceSearchList(searchWord,type));
+        model.addAttribute("boardList",boardService.boardServiceBoardSearchPage(searchWord,type,pageDTO));
+        PagebarDTO pagebarDTO=new PagebarDTO(pageDTO,boardService.boardServiceBnoCount());
+        model.addAttribute("pagebar",pagebarDTO); //페이지바 //문제생김
         return  "/board/list";
     }
 

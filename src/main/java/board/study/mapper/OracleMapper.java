@@ -29,4 +29,8 @@ public interface OracleMapper {
     //검색된 정보 불러오기
 
     List<BoardDTO> boardPage(PageDTO pageDTO);
+
+    Long boardBnoCount();
+
+    List<BoardDTO> boardSearchPage(@Param("searchWord") String searchWord,  @Param("type")String type, @Param("pageDTO")PageDTO pageDTO);
 }

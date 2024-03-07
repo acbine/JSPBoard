@@ -5,7 +5,6 @@ import board.study.boardDTO.PageDTO;
 import board.study.mapper.OracleMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,5 +50,15 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<BoardDTO> boardServicePage(PageDTO pageDTO) {
         return oracleMapper.boardPage(pageDTO);
+    }
+
+    @Override
+    public Long boardServiceBnoCount() {
+        return oracleMapper.boardBnoCount();
+    }
+
+    @Override
+    public List<BoardDTO> boardServiceBoardSearchPage(String searchWord, String type , PageDTO pageDTO) {
+        return oracleMapper.boardSearchPage(searchWord,type,pageDTO);
     }
 }

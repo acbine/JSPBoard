@@ -22,11 +22,11 @@ public class OracleMapperTest {
 
     @Test
     public void registerTest(){
-        for (int i=0; i<=5; i++){
+        for (int i=0; i<=10; i++){
             BoardDTO boardDTO = new BoardDTO();
-            boardDTO.setTitle("등록테스트코드(제목)3");
-            boardDTO.setContent("등록테스트코드(내용)3");
-            boardDTO.setWriter("작성자3");
+            boardDTO.setTitle("aaa");
+            boardDTO.setContent("a");
+            boardDTO.setWriter("bb");
             oracleMapper.boardRegister(boardDTO);
         }
     }
@@ -63,5 +63,16 @@ public class OracleMapperTest {
     public void pageTest(){
         PageDTO pageDTO = new PageDTO(5,2); //  5페이지 * 2개씩 총갯수10개
         List<BoardDTO> list = oracleMapper.boardPage(pageDTO);
+    }
+    
+    @Test
+    public void countTest(){//글 총갯수 테스트
+        oracleMapper.boardBnoCount();
+    }
+
+    @Test
+    public void searchPageTest(){
+        PageDTO pageDTO = new PageDTO(5,2);
+        oracleMapper.boardSearchPage("테","all",pageDTO);
     }
 }

@@ -62,4 +62,42 @@
     </select>
 
 
+    <select id="boardSearchPage" resultType="board.study.boardDTO.BoardDTO">
+    <![CDATA[
+        select bno,title,content,writer,regdate,updatedate
+        from(
+            select /*+INDEX_DESC(TABLE_BOARD TABLE_BOARD_PK)*/
+            Rownum as Rnum ,bno,title,content,writer,regdate,updatedate
+            from table_board
+        ]]>
+        <where>
+            <if test='type.equals("all")'>
+                ( title like '%' ||#{searchWord}|| '%' or writer like '%' ||#{searchWord}|| '%' or content like '%' ||#{searchWord}|| '%' ) and Rownum &lt;= #{pageDTO.pageNum}* #{pageDTO.amount}
+            </if>
+
+            <if test='type.equals("title")'>
+                ( title like '%' ||#{searchWord}|| '%' ) and Rownum &lt;= #{pageDTO.pageNum}* #{pageDTO.amount}
+            </if>
+
+            <if test='type.equals("writer")'>
+                ( writer like '%' ||#{searchWord}|| '%' ) and Rownum &lt;= #{pageDTO.pageNum}* #{pageDTO.amount}
+            </if>
+
+            <if test='type.equals("content")'>
+                ( title like '%' ||#{searchWord}|| '%' ) and Rownum &lt;= #{pageDTO.pageNum}* #{pageDTO.amount}
+            </if>
+        </where>
+            )
+        where Rnum &gt; (#{pageDTO.pageNum}-1) * #{pageDTO.amount}
+
+    </select>
+
+    <select id="boardBnoCount" resultType="long">
+        select count(*) from TABLE_BOARD
+    </select>
+
+
+
+
+
 </mapper>
