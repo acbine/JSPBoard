@@ -75,4 +75,9 @@ public class OracleMapperTest {
         PageDTO pageDTO = new PageDTO(5,2);
         oracleMapper.boardSearchPage("테","all",pageDTO);
     }
+
+    @Test
+    public void searchcountTest(){//글 총갯수 테스트
+        oracleMapper.boardSearchBnoCount("테","all");
+    }
 }

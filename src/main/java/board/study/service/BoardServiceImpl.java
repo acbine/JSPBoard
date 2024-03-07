@@ -61,4 +61,9 @@ public class BoardServiceImpl implements BoardService {
     public List<BoardDTO> boardServiceBoardSearchPage(String searchWord, String type , PageDTO pageDTO) {
         return oracleMapper.boardSearchPage(searchWord,type,pageDTO);
     }
+
+    @Override
+    public Long boardServiceboardSearchBnoCount(String searchWord, String type) {
+        return oracleMapper.boardSearchBnoCount(searchWord, type);
+    }
 }

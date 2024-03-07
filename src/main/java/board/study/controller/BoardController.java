@@ -18,6 +18,8 @@ public class BoardController {
 
     @Autowired
     BoardService boardService;
+
+
     @GetMapping("/board/list")
     public void list(Model model, PageDTO pageDTO) {
         log.info("list url 요청");
@@ -26,6 +28,8 @@ public class BoardController {
 //        model.addAttribute("boardList",boardService.boardServiceList()); //
         model.addAttribute("boardList",boardService.boardServicePage(pageDTO)); //1페이지 내용 //문제없음
         model.addAttribute("pagebar",new PagebarDTO(pageDTO,boardService.boardServiceBnoCount())); //페이지바 //문제생김
+        model.addAttribute("notSearch",true);
+
     }
 
     @GetMapping("/board/openRegister")
@@ -75,8 +79,11 @@ public class BoardController {
         log.info(pageDTO);
 //        model.addAttribute("boardList",boardService.boardServiceSearchList(searchWord,type));
         model.addAttribute("boardList",boardService.boardServiceBoardSearchPage(searchWord,type,pageDTO));
-        PagebarDTO pagebarDTO=new PagebarDTO(pageDTO,boardService.boardServiceBnoCount());
+        PagebarDTO pagebarDTO=new PagebarDTO(pageDTO,boardService.boardServiceboardSearchBnoCount(searchWord,type));
         model.addAttribute("pagebar",pagebarDTO); //페이지바 //문제생김
+        model.addAttribute("search",true);
+        model.addAttribute("searchWord",searchWord);
+        model.addAttribute("type",type);
         return  "/board/list";
     }
 

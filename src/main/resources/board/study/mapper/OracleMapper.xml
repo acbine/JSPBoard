@@ -96,6 +96,27 @@
         select count(*) from TABLE_BOARD
     </select>
 
+    <select id="boardSearchBnoCount" resultType="long">
+        select count(*) from TABLE_BOARD
+        <where>
+            <if test='type.equals("all")'>
+                title like '%' ||#{searchWord}|| '%' or writer like '%' ||#{searchWord}|| '%' or content like '%' ||#{searchWord}|| '%'
+            </if>
+
+            <if test='type.equals("title")'>
+                title like '%' ||#{searchWord}|| '%'
+            </if>
+
+            <if test='type.equals("writer")'>
+                writer like '%' ||#{searchWord}|| '%'
+            </if>
+
+            <if test='type.equals("content")'>
+                title like '%' ||#{searchWord}|| '%'
+            </if>
+        </where>
+    </select>
+
 
 
 

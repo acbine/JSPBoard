@@ -33,4 +33,6 @@ public interface OracleMapper {
     Long boardBnoCount();
 
     List<BoardDTO> boardSearchPage(@Param("searchWord") String searchWord,  @Param("type")String type, @Param("pageDTO")PageDTO pageDTO);
+
+    Long boardSearchBnoCount(@Param("searchWord") String searchWord,  @Param("type")String type);
 }

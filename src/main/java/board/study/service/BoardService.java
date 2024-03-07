@@ -25,4 +25,6 @@ public interface BoardService {
 
     List<BoardDTO> boardServiceBoardSearchPage(String searchWord , String type , PageDTO pageDTO); //검색용 페이징
 
+    Long boardServiceboardSearchBnoCount(String searchWord, String type); //검색시 글총갯수
+
 }

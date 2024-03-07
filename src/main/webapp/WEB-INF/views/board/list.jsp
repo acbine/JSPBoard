@@ -58,27 +58,47 @@
                                     </c:forEach>
                                 </tbody>
                             </table>
-                            <div>
+
                                 <ul class="pagination">
+                                        <c:if test="${notSearch}">
+                                            <c:if test="${pagebar.prev}">
+                                                <li class="pagenate_button">
+                                                    <a href="/board/list?pageNum=${pagebar.startPage-1}" >&lt;</a>
+                                                </li>
+                                            </c:if>
 
-                                    <c:if test="${pagebar.prev}">
-                                        <li class="pagenate_button">
-                                            <a href="/board/list?pageNum=${pagebar.startPage-1}" >&lt;</a>
-                                        </li>
-                                    </c:if>
+                                            <c:forEach begin="${pagebar.startPage}" end="${pagebar.endPage}" var="num">
+                                                <li class="pagenate_button ${pagebar.pageDTO.pageNum == num ? 'active' : ''}">
+                                                    <a href="/board/list?pageNum=${num}" >${num}+안됫것</a>
+                                                </li>
+                                            </c:forEach>
 
-                                    <c:forEach begin="${pagebar.startPage}" end="${pagebar.endPage}" var="num">
-                                        <li class="pagenate_button ${pagebar.pageDTO.pageNum == num ? 'active' : ''}">
-                                            <a href="/board/list?pageNum=${num}" >${num}</a>
-                                        </li>
-                                    </c:forEach>
+                                            <c:if test="${pagebar.next}">
+                                                <li class="pagenate_button">
+                                                    <a href="/board/list?pageNum=${pagebar.endPage+1}" >&gt;</a>
+                                                </li>
+                                            </c:if>
+                                        </c:if>
 
-                                    <c:if test="${pagebar.next}">
-                                        <li class="pagenate_button">
-                                            <a href="/board/list?pageNum=${pagebar.endPage+1}" >&gt;</a>
-                                        </li>
-                                    </c:if>
+                                        <c:if test="${search}">
+                                            <c:if test="${pagebar.prev}">
+                                                <li class="pagenate_button">
+                                                    <a href="/board/search?pageNum=${pagebar.startPage-1}&searchWord=${searchWord}&type=${type}" >&lt;</a>
+                                                </li>
+                                            </c:if>
 
+                                            <c:forEach begin="${pagebar.startPage}" end="${pagebar.endPage}" var="num">
+                                                <li class="pagenate_button ${pagebar.pageDTO.pageNum == num ? 'active' : ''}">
+                                                    <a href="/board/search?pageNum=${num}&searchWord=${searchWord}&type=${type}">${num}+검색된것</a>
+                                                </li>
+                                            </c:forEach>
+
+                                            <c:if test="${pagebar.next}">
+                                                <li class="pagenate_button">
+                                                    <a href="/board/search?pageNum=${pagebar.endPage+1}&searchWord=${searchWord}&type=${type}" >&gt;</a>
+                                                </li>
+                                            </c:if>
+                                        </c:if>
                                 </ul>
                             <div>
 
