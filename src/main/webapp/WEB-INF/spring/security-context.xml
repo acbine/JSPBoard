@@ -9,13 +9,27 @@
 
 	<security:http>
 
-		<security:form-login/>
+		<security:form-login login-page="/board/loginPage"/>
+		<security:intercept-url pattern="/test/all" access="permitAll"/>
+		<security:intercept-url pattern="/test/member" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/test/admin" access="hasRole('ROLE_ADMIN')" />
+
+		<security:intercept-url pattern="/board/list" access="permitAll"/>
+		<security:intercept-url pattern="/board/openRegister" access="hasRole('ROLE_MEMBER')"/>
+
+		<security:access-denied-handler error-page="/board/accessDeny"/>
 
 	</security:http>
 
-	<security:authentication-manager alias="test"/>
+	<security:authentication-manager alias="test">
+		<security:authentication-provider>
+			<!-- 사용자를 메모리에 정의하여 인증하는 예시 -->
+			<security:user-service>
+				<security:user name="1234" password="{noop}1234" authorities="ROLE_MEMBER"></security:user>
 
-
-
+				<security:user name="1111" password="{noop}1111" authorities="ROLE_ADMIN"></security:user>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
 
 </beans>
