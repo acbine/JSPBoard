@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,23 +45,26 @@
                         <h3 class="panel-title">로그인해주세요</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form action="/login" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="아이디" name="아이디" type="email" autofocus>
+                                    <input class="form-control" placeholder="아이디" name="username" value="1234" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="비밀번호" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="비밀번호" name="password" type="password" value="1234">
                                 </div>
-                                <div class="checkbox">
-                            <!--       <label>
+                            <!--     <div class="checkbox">
+                                <label>
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label> -->
-                                </div>
+                                    </label>
+                                </div>-->
 
-                                <a href="/board/list" class="btn btn-lg btn-success btn-block">로그인</a>
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value ="로그인"/>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </fieldset>
                         </form>
+                        <h3>${error}</h3>
+                        <h3>${logout}</h3>
                     </div>
                 </div>
             </div>
