@@ -28,8 +28,8 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="${boardDetail.bno}content" style="width: 200%" readonly>${boardDetail.content}</textarea>
+                                    <div class="form-group" style="width: 100%" >
+                                        <textarea class="form-control" id="${boardDetail.bno}content"  readonly>${boardDetail.content}</textarea>
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -60,7 +60,7 @@
     function cancel(){
         console.log("취소버튼클릭");
         $("#${boardDetail.bno}title").replaceWith("<h1 class='page-header' id='${boardDetail.bno}title'>${boardDetail.title}</h1>")
-        $("#${boardDetail.bno}content").attr("readonly");
+        $("#${boardDetail.bno}content").attr("readonly", "readonly");
         $("#${boardDetail.bno}cancel").replaceWith("<button type='button' class='btn btn-danger'  id='${boardDetail.bno}delete' style='float: right;' onclick=\"location.href='/board/delete/${boardDetail.bno}';\">삭제하기</button>");
         $("#${boardDetail.bno}send").replaceWith("<button type='button' class='btn btn-warning' id='${boardDetail.bno}modify' style='float: right;' onclick='update()'>수정하기</button>");
     }
@@ -71,13 +71,14 @@
         var aaa=$('#${boardDetail.bno}title').val();
         var bbb=$("#${boardDetail.bno}content").val();
         var ccc = ${boardDetail.bno};
+
         $.ajax({
-            url: '/board/update/?bno='+ccc+'&title='+aaa+'&content='+bbb,
-            method: 'post',
+            url: '/board/update?bno='+ccc+'&title='+aaa+'&content='+bbb,
+            method: 'get',
             success: function(response) {
                 location.reload();
             },
-            error: function(xhr, status, error) {
+            error: function(error) {
             }
         });
 

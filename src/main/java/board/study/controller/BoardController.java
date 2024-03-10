@@ -62,7 +62,7 @@ public class BoardController {
         return  "redirect:/board/list";
     }
 
-    @PostMapping("/board/update")
+    @GetMapping("/board/update")
     public String update(BoardDTO boardDTO ,Model model){
         log.info("수정요청");
         log.info(boardDTO);
