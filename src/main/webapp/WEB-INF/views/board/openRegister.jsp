@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>작성자</label>
-                                            <input class="form-control" placeholder="작성자 입력"  name="writer" style="width: 200%" required>
+                                            <input class="form-control" placeholder="작성자 입력"  name="writer" value="<sec:authentication property='principal.username' />" style="width: 200%" readonly>
                                         </div>
                                         
                                         <div class="form-group">

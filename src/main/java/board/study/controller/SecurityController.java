@@ -1,6 +1,8 @@
 package board.study.controller;
 
 import lombok.extern.log4j.Log4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,7 @@ public class SecurityController {
         }
 
         if (logout != null){
+
             model.addAttribute("logout","로그아웃 했습니다"); //logout: 사용자가 로그아웃을 수행했을 때, Spring Security가 자동으로 이 파라미터를 전달
         }
     }

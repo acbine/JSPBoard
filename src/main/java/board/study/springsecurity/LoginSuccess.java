@@ -2,7 +2,9 @@ package board.study.springsecurity;
 
 import lombok.extern.log4j.Log4j;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.ui.Model;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +26,13 @@ public class LoginSuccess implements AuthenticationSuccessHandler { //스프링 
 
         authentication.getAuthorities().forEach(authority -> { //아까 로그인시 받은 정보를 리스트에  넣어놈
             roleNames.add(authority.getAuthority());
-
+            
         });
 
         if (roleNames.contains("ROLE_ADMIN")) {
+            Object principal = authentication.getPrincipal();
+            String username = ((UserDetails) principal).getUsername();
+            System.out.println(username);
 
             httpServletResponse.sendRedirect("/board/list");
             return;
@@ -35,10 +40,12 @@ public class LoginSuccess implements AuthenticationSuccessHandler { //스프링 
 
         if (roleNames.contains("ROLE_MEMBER")) {
 
-            httpServletResponse.sendRedirect("/test/admin");
+            httpServletResponse.sendRedirect("/board/list");
             return;
         }
 
         httpServletResponse.sendRedirect("/");
+
+
     }
 }

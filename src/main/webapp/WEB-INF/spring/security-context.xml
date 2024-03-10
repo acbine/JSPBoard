@@ -10,13 +10,13 @@
 	<security:http>
 
 		<security:form-login login-page="/board/loginPage" authentication-success-handler-ref="LoginSuccess" />
-
+		<security:logout logout-url="/logout"/>
 		<security:intercept-url pattern="/test/all" access="permitAll"/>
 		<security:intercept-url pattern="/test/member" access="hasRole('ROLE_MEMBER')" />
 		<security:intercept-url pattern="/test/admin" access="hasRole('ROLE_ADMIN')" />
 
 		<security:intercept-url pattern="/board/list" access="permitAll"/>
-		<security:intercept-url pattern="/board/openRegister" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/board/openRegister" access="hasAnyRole('ROLE_MEMBER','ROLE_ADMIN')"/>
 <!--		hasRole 이걸를 사용해야 권한을 검사할수있음-->
 
 		<security:access-denied-handler error-page="/board/accessDeny"/>

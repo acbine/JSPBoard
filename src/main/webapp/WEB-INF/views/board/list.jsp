@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <%--헤더 파일 :list.jsp를 읽기전에 템플릿?을 먼저 불러옴 --%>
 <%@ include file="../includes/header.jsp" %>
@@ -32,6 +33,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             게시글 목록 보기(<a href="openRegister">게시글 쓰기</a>)
+
 
                         </div>
                         <!-- /.panel-heading -->

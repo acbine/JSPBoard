@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,6 +60,26 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')">
+                    <li>
+                        유저이름: <sec:authentication property="principal.username" />
+                    </li>
+
+                    <li>
+                        <form action="/logout" method="post">
+                            <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
+                            <button class="btn btn-default" type="submit">로그아웃</button>
+                        </form>
+                    </li>
+                </sec:authorize>
+
+                <sec:authorize access='isAnonymous()'>
+                    <li>
+                        <button class="btn btn-default" onclick="window.location.href='/board/loginPage'">로그인</button>
+                    </li>
+                </sec:authorize>
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
