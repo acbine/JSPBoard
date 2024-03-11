@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <%--헤더 파일 넣기 --%>    
 <%@ include file="../includes/header.jsp" %>
@@ -41,8 +42,16 @@
 
                     </div>
                     <!-- /.panel -->
-                    <button type="button" class="btn btn-danger"  id="${boardDetail.bno}delete" style="float: right;" onclick="location.href='/board/delete/${boardDetail.bno}';">삭제하기</button>
-                    <button type="button" class="btn btn-warning" id="${boardDetail.bno}modify" style="float: right;" onclick="update()">수정하기</button>
+                    <c:if test="${boardDetail.writer eq username}">
+                        <button type="button" class="btn btn-danger"  id="${boardDetail.bno}delete" style="float: right;" onclick="location.href='/board/delete/${boardDetail.bno}';">삭제하기</button>
+                        <button type="button" class="btn btn-warning" id="${boardDetail.bno}modify" style="float: right;" onclick="update()">수정하기</button>
+                    </c:if>
+                    ㅁㅇㄴㅁㅇ:${username}
+
+
+
+
+
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

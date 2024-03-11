@@ -40,7 +40,7 @@
                                             <label>내용 입력</label>
                                             <textarea class="form-control" rows="5" placeholder="내용 입력" name="content" style="width: 200%" required></textarea>
                                         </div>
-                                        
+                                        <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/> <!--스프링 세큐리티 포스트 요청시 필요-->
                                         <button type="submit" class="btn btn-default">등록</button>
                                         <button type="reset" class="btn btn-default">초기화</button>
                                     </form>

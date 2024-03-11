@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+
 @Controller
 @Log4j
 public class BoardController {
@@ -46,10 +48,13 @@ public class BoardController {
     }
 
     @GetMapping("/board/viewDetail/{bno}")
-    public String viewDetail(@PathVariable Long bno,Model model ) {
+    public String viewDetail(@PathVariable Long bno, Model model, Principal principal ) {
         log.info("상세보기 페이지 요청");
         log.info(bno);
         model.addAttribute("boardDetail",boardService.boardServiceViewDetail(bno));
+        if(principal != null) {
+            model.addAttribute("username", principal.getName());
+        }
         log.info(boardService.boardServiceViewDetail(bno));
         return  "/board/viewDetail";
     }
