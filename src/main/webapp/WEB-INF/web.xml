@@ -32,8 +32,22 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- 한글설정 -->
 
+	<!--스프링 세큐리티 필터 시작-->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!--스프링 세큐리티 필터 끝-->
+
+
+
+	<!-- 한글설정 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>
@@ -50,17 +64,5 @@
 		<servlet-name>appServlet</servlet-name>
 	</filter-mapping>
 	<!-- 한글설정 END -->
-
-	<!--스프링 세큐리티 필터 시작-->
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<!--스프링 세큐리티 필터 끝-->
 
 </web-app>

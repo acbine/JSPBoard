@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.study.mapper.MemberMapper">
+
+    <resultMap id="authMap" type="board.study.memberDTO.MemberAUTHDTO">
+        <result property="userid" column="userid"/>  <!--객체의 userid를 DB의 userid에 매핑-->
+        <result property="auth" column="auth"/>
+    </resultMap>
+
+    <resultMap id="memberMap" type="board.study.memberDTO.MemberDTO">
+        <id property="userid" column="userid"/>
+        <result property="userid" column="userid"/>
+        <result property="userpw" column="userpw"/>
+        <result property="userName" column="username"/>
+        <result property="regDate" column="regdate"/>
+        <result property="updateDate" column="updatedate"/>
+        <collection property="authList" resultMap="authMap"> <!--authList를  위에서 만들어둔 authMap기반에 매핑 -->
+        </collection>
+    </resultMap>
+<!--  resultMap :자바 객체에 매핑하기 위한 설정을 정의하는 역할  resultType과의 =>> 차이 SQL 쿼리의 결과가 한 개의 값을 반환할 때 사용   -->
+
+
+    <select id="selectMember" resultMap="memberMap">
+        select
+            bm.userid,  userpw, username, enabled, regdate, updatedate, auth
+        from
+            board_member bm left outer join board_member_auth ba on bm.userid = ba.userid
+        where bm.userid = #{userid}
+    </select>
+
+</mapper>

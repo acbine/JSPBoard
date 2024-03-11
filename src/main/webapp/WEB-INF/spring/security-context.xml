@@ -7,6 +7,11 @@
 
 	<bean id="LoginSuccess" class="board.study.springsecurity.LoginSuccess"></bean>
 
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	<!--스프링 시큐리티 안에 포함되어있는	 암호화-->
+
+
+
 	<security:http>
 
 		<security:form-login login-page="/board/loginPage" authentication-success-handler-ref="LoginSuccess" />
@@ -26,12 +31,20 @@
 
 	<security:authentication-manager alias="test"> <!-- 인증매니저 -->
 		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="datasource" users-by-username-query="select userid , userpw , enabled from BOARD_MEMBER where userid = ? "
+																	authorities-by-username-query="select userid, auth from BOARD_MEMBER_AUTH where userid = ? " />
+<!--			users-by-username-query:인증하는데 필용한-->
+<!--			authorities-by-username-query:권한을확인하는데 필요한-->
 
-			<security:user-service> <!-- 실제 인증을 처리하는 프로바이더(용자의 인증을 수행하고, 사용자의 권한을 확인하는 메소드를 포함한 인터페이스)를 정의-->
-				<security:user name="1234" password="{noop}1234" authorities="ROLE_MEMBER"></security:user>  <!-- 실제 사용자들을 정의-->
+			<security:password-encoder ref="bcryptPasswordEncoder" />
 
-				<security:user name="1111" password="{noop}1111" authorities="ROLE_ADMIN"></security:user>
-			</security:user-service>
+<!--			<security:user-service> &lt;!&ndash; 실제 인증을 처리하는 프로바이더(용자의 인증을 수행하고, 사용자의 권한을 확인하는 메소드를 포함한 인터페이스)를 정의&ndash;&gt;-->
+<!--				<security:user name="1234" password="{noop}1234" authorities="ROLE_MEMBER"></security:user>  &lt;!&ndash; 실제 사용자들을 정의&ndash;&gt;-->
+
+<!--				<security:user name="1111" password="{noop}1111" authorities="ROLE_ADMIN"></security:user>-->
+<!--			</security:user-service>-->
+
+
 
 		</security:authentication-provider>
 	</security:authentication-manager>
