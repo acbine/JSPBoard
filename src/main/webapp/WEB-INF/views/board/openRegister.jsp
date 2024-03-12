@@ -1,12 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8"); %> <%-- post 요청시 한글 깨져서 넣음 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%-- 헤더에다 넣은면 파일 인식을 목해서 여기에다 넣음 제 --%>    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
     <%--헤더파일 넣기 --%>
-    
-    
-    
     <%@ include file="../includes/header.jsp" %>
 
         <div id="page-wrapper">
@@ -26,7 +21,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="/board/register" method="post"  accept-charset="utf-8">
+                                    <form role="form" action="/board/register" method="post"  accept-charset="UTF-8">
                                         <div class="form-group">
                                             <label>제목</label>
                                             <input class="form-control" placeholder="제목 입력" name="title" style="width: 200%" required>
