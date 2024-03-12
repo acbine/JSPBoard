@@ -4,6 +4,7 @@ import board.study.boardDTO.BoardDTO;
 import board.study.boardDTO.PageDTO;
 import board.study.boardDTO.PagebarDTO;
 import board.study.service.BoardService;
+import board.study.service.UserDetailsServiceImpl;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class BoardController {
 
     @Autowired
     BoardService boardService;
+
+    @Autowired
+    UserDetailsServiceImpl userDetailsService;
 
 
     @GetMapping("/board/list")
@@ -53,7 +57,7 @@ public class BoardController {
         log.info(bno);
         model.addAttribute("boardDetail",boardService.boardServiceViewDetail(bno));
         if(principal != null) {
-            model.addAttribute("username", principal.getName());
+            model.addAttribute("username",userDetailsService.loadUserByUsername(principal.getName()));
         }
         log.info(boardService.boardServiceViewDetail(bno));
         return  "/board/viewDetail";

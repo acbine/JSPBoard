@@ -42,13 +42,18 @@
 
                     </div>
                     <!-- /.panel -->
-                    <c:if test="${boardDetail.writer eq username}">
+                    <c:if test="${boardDetail.writer eq principal.memberDTO.userName}">
                         <button type="button" class="btn btn-danger"  id="${boardDetail.bno}delete" style="float: right;" onclick="location.href='/board/delete/${boardDetail.bno}';">삭제하기</button>
                         <button type="button" class="btn btn-warning" id="${boardDetail.bno}modify" style="float: right;" onclick="update()">수정하기</button>
                     </c:if>
-                    ㅁㅇㄴㅁㅇ:${username}
 
+                    <sec:authorize access='isAnonymous()'>
+                        안녕
+                    </sec:authorize>
 
+                    <sec:authorize access='isAuthenticated()'>
+                        유저아이디:<sec:authentication property="principal.memberDTO.userName"/>
+                    </sec:authorize>
 
 
 

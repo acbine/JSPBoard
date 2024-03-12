@@ -63,7 +63,7 @@
 
                 <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')">
                     <li>
-                        유저이름: <sec:authentication property="principal.username" />
+                        유저이름: <sec:authentication property="principal.memberDTO.userName" />
                     </li>
 
                     <li>

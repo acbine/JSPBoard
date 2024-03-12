@@ -10,6 +10,9 @@
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	<!--스프링 시큐리티 안에 포함되어있는	 암호화-->
 
+	<bean id="UserDetailsServiceImpl" class="board.study.service.UserDetailsServiceImpl"/>
+
+
 
 
 	<security:http>
@@ -30,11 +33,12 @@
 	</security:http>
 
 	<security:authentication-manager alias="test"> <!-- 인증매니저 -->
-		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="datasource" users-by-username-query="select userid , userpw , enabled from BOARD_MEMBER where userid = ? "
-																	authorities-by-username-query="select userid, auth from BOARD_MEMBER_AUTH where userid = ? " />
-<!--			users-by-username-query:인증하는데 필용한-->
-<!--			authorities-by-username-query:권한을확인하는데 필요한-->
+		<security:authentication-provider
+				user-service-ref="UserDetailsServiceImpl">
+<!--			<security:jdbc-user-service data-source-ref="datasource" users-by-username-query="select userid , userpw , enabled from BOARD_MEMBER where userid = ? "-->
+<!--																	authorities-by-username-query="select userid, auth from BOARD_MEMBER_AUTH where userid = ? " />-->
+<!--&lt;!&ndash;			users-by-username-query:인증하는데 필용한&ndash;&gt;-->
+<!--&lt;!&ndash;			authorities-by-username-query:권한을확인하는데 필요한&ndash;&gt;-->
 
 			<security:password-encoder ref="bcryptPasswordEncoder" />
 
@@ -43,8 +47,6 @@
 
 <!--				<security:user name="1111" password="{noop}1111" authorities="ROLE_ADMIN"></security:user>-->
 <!--			</security:user-service>-->
-
-
 
 		</security:authentication-provider>
 	</security:authentication-manager>
