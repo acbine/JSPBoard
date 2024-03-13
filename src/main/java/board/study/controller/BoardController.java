@@ -57,7 +57,7 @@ public class BoardController {
         log.info(bno);
         model.addAttribute("boardDetail",boardService.boardServiceViewDetail(bno));
         if(principal != null) {
-            model.addAttribute("username",userDetailsService.loadUserByUsername(principal.getName()));
+            model.addAttribute("username",userDetailsService.selectMember(principal.getName()).getUserName()); //principal 이객체는 로그인중이면 상항있음
         }
         log.info(boardService.boardServiceViewDetail(bno));
         return  "/board/viewDetail";

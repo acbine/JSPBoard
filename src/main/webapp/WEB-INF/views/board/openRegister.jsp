@@ -20,24 +20,26 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6" style="width: 100%">
                                     <form role="form" action="/board/register" method="post"  accept-charset="UTF-8">
                                         <div class="form-group">
                                             <label>제목</label>
-                                            <input class="form-control" placeholder="제목 입력" name="title" style="width: 200%" required>
+                                            <input class="form-control" placeholder="제목 입력" name="title" required>
                                         </div>
                                         <div class="form-group">
                                             <label>작성자</label>
-                                            <input class="form-control" placeholder="작성자 입력"  name="writer" value="<sec:authentication property='principal.username' />" style="width: 200%" readonly>
+                                            <input class="form-control" placeholder="작성자 입력"  name="writer" value="<sec:authentication property='principal.memberDTO.userName' />" readonly>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>내용 입력</label>
-                                            <textarea class="form-control" rows="5" placeholder="내용 입력" name="content" style="width: 200%" required></textarea>
+                                            <textarea class="form-control" rows="5" placeholder="내용 입력" name="content" required></textarea>
                                         </div>
                                         <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/> <!--스프링 세큐리티 포스트 요청시 필요-->
-                                        <button type="submit" class="btn btn-default">등록</button>
-                                        <button type="reset" class="btn btn-default">초기화</button>
+                                        <div >
+                                            <button type="submit" class="btn btn-default">등록</button>
+                                            <button type="reset" class="btn btn-default">초기화</button>
+                                        <div>
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

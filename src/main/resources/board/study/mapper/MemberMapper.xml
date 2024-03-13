@@ -30,4 +30,14 @@
         where bm.userid = #{userid}
     </select>
 
+    <insert id="memberRegister">
+        insert into board_member(userid, userpw, username)
+        values(#{userid},#{userpw},#{userName})
+    </insert>
+
+    <insert id="memberAuthRegister">
+        insert into board_member_auth(userid,auth)
+        values(#{userid},#{auth})
+    </insert>
+
 </mapper>

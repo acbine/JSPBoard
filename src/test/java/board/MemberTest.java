@@ -2,6 +2,8 @@ package board;
 
 
 import board.study.mapper.MemberMapper;
+import board.study.memberDTO.MemberDTO;
+import board.study.service.UserDetailsServiceImpl;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,9 +27,10 @@ public class MemberTest {
     
     @Autowired
     DataSource dataSource; //DB 연결
-
     @Autowired
     MemberMapper memberMapper;
+    @Autowired
+    UserDetailsServiceImpl userDetailsService;
 
     @Test
     public void insert(){
@@ -64,5 +67,30 @@ public class MemberTest {
     public void selectMember(){ //mapper로 변경
         log.info(memberMapper.selectMember("2222"));
         memberMapper.selectMember("2222").getAuthList().forEach(x->log.info(x));
+    }
+
+    @Test
+    public void selectMemberService(){ //서비스 테스트?
+        MemberDTO memberDTO = userDetailsService.selectMember("1111");
+        log.info(memberDTO);
+    }
+
+    @Test
+    public void memberRegisterTest(){ //회원가임
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setUserid("3333");
+        memberDTO.setUserpw(passwordEncoder.encode("1111"));
+        memberDTO.setUserName("3번");
+        memberMapper.memberRegister(memberDTO);
+    }
+
+    @Test
+    public void memberAuthRegister(){ //회원가임
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setUserid("3333");
+        memberDTO.setUserpw(passwordEncoder.encode("1111"));
+        memberDTO.setUserName("3번");
+        log.info(memberDTO.getUserid());
+        memberMapper.memberAuthRegister(memberDTO.getUserid(),"ROLE_MEMBER");
     }
 }

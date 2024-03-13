@@ -28,9 +28,9 @@
 
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group" style="width: 100%" >
-                                        <textarea class="form-control" id="${boardDetail.bno}content"  readonly>${boardDetail.content}</textarea>
+                                <div class="col-lg-6" style="width: 100%">
+                                    <div class="form-group" >
+                                        <textarea  class="form-control" id="${boardDetail.bno}content"  readonly>${boardDetail.content}</textarea>
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -42,17 +42,17 @@
 
                     </div>
                     <!-- /.panel -->
-                    <c:if test="${boardDetail.writer eq principal.memberDTO.userName}">
+                    <c:if test="${boardDetail.writer eq username}">
                         <button type="button" class="btn btn-danger"  id="${boardDetail.bno}delete" style="float: right;" onclick="location.href='/board/delete/${boardDetail.bno}';">삭제하기</button>
                         <button type="button" class="btn btn-warning" id="${boardDetail.bno}modify" style="float: right;" onclick="update()">수정하기</button>
                     </c:if>
 
                     <sec:authorize access='isAnonymous()'>
-                        안녕
+                        안녕 로그인 안되면 보여야됨
                     </sec:authorize>
 
                     <sec:authorize access='isAuthenticated()'>
-                        유저아이디:<sec:authentication property="principal.memberDTO.userName"/>
+                        유저아이디:<sec:authentication property="principal.memberDTO.userName"/> 로그인 되면 보여야회
                     </sec:authorize>
 
 

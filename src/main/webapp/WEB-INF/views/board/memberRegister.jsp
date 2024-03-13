@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>로그인 페이지</title>
+    <title>회원가입 페이지</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -44,26 +44,26 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">로그인해주세요</h3>
+                        <h3 class="panel-title">정보를 입력해주세요</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="/login" method="post">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="아이디" name="username"  autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="비밀번호" name="password" type="password">
-                                </div>
+                        <div class="form-group">
+                            <form action="/board/membership" method="post">
+                                <label>로그인 아이디</label>
+                                <input class="form-control" name="userid"  placeholder="아이디를 입력해주세요" required><br>
 
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value ="로그인"/>
-                                <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
+                                <label>비밀번호</label>
+                                <input class="form-control" name="userpw" placeholder="비밀번호를 입력해주세요" required><br>
+
+                                <label>유저이름</label>
+                                <input class="form-control" name="userName" placeholder="유저이름을 입력해주세요" required><br>
+                                <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/><br>
                                 ${error}
-                                <a href="/board/memberRegister">회원가입</a>
-                            </fieldset>
-                        </form>
-                        <h3>${error}</h3>
-                        <h3>${logout}</h3>
+                                <div style="text-align: center;">
+                                    <button class="btn btn-default" type="submit">등록</button><br>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,13 +82,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="/resources/dist/js/sb-admin-2.js"></script>
 
-    <script>
-        var ment="${success}";
-        if(${successJudgemet}){
-            console.log(ment);
-            alert(ment);
-        }
-    </script>
 </body>
 
 </html>

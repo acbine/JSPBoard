@@ -66,4 +66,6 @@ public class BoardServiceImpl implements BoardService {
     public Long boardServiceboardSearchBnoCount(String searchWord, String type) {
         return oracleMapper.boardSearchBnoCount(searchWord, type);
     }
+
+
 }
