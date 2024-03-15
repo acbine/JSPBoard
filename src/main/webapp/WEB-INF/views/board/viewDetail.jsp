@@ -62,7 +62,7 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <ul class="timeline">
+                                <ul id="replyUl" class="timeline">
                                     <li>
                                         <div class="timeline-panel" style="width:100%">
                                             <div class="timeline-heading">
@@ -74,7 +74,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="timeline-inverted">
+                                    <!--<li class="timeline-inverted">
                                         <div class="timeline-panel" style="width:100%">
                                             <div class="timeline-heading" style="text-align: right;">
                                                 <small class="text-muted"><i class="fa fa-clock-o"></i> 날짜</small>
@@ -84,7 +84,7 @@
                                                 ㅇㄹㄹㄹㄹㄹ
                                             </div>
                                         </div>
-                                    </li>
+                                    </li>-->
                                 </ul>
 
                                 <sec:authorize access='isAuthenticated()'>
@@ -137,8 +137,8 @@
     function send(){
         console.log("전송버튼클릭")
 
-        var aaa=$('#${boardDetail.bno}title').val();
-        var bbb=$("#${boardDetail.bno}content").val();
+        var aaa = $('#${boardDetail.bno}title').val();
+        var bbb = $("#${boardDetail.bno}content").val();
         var ccc = ${boardDetail.bno};
 
         $.ajax({
@@ -156,7 +156,6 @@
         console.log(ccc);
     }
 
-
     function update() {
             console.log("수정버튼클릭");
             $("#${boardDetail.bno}title").replaceWith("<textarea class='form-control' id='${boardDetail.bno}title'>${boardDetail.title}</textarea>");
@@ -165,10 +164,62 @@
             $("#${boardDetail.bno}modify").replaceWith("<button type='button' class='btn btn-info'  id='${boardDetail.bno}send' onclick='send()' style='float: right;'>수정완료</button>");
     }
 
-
 </script>
 
 
+
+<script>
+    var ddd = ${boardDetail.bno};
+    document.addEventListener("DOMContentLoaded", function() {
+            $.ajax({
+                    url: '/board/replyList?bno='+ddd,
+                    method: 'get',
+                    success: function(response) {
+                        console.log(response);
+                        for(var i=0; i<response.length; i++){
+
+                            var li = $("<li>"); // li 요소
+                            var timeLinePanel = $("<div>").addClass("timeline-panel").css("width", "100%"); //div판낼
+                            var timeLineHeading = $("<div>").addClass("timeline-heading"); //divhead생성
+                            console.log(response[i].replywriter);
+
+                            timeLineHeading.append(response[i].replywriter); //헤드div 에 작성자 추가
+
+                            var small = $("<small>").addClass("text-muted"); //small? 생성
+                            var clockIcon = $("<i>").addClass("fa fa-clock-o");
+                            small.append(clockIcon);
+
+                            var dateString = response[i].replyDate;
+                            var date = new Date(dateString); //기록된시간
+
+                            var koreanOffset = 9 * 60*60000; // 한국 UTC+9시간 60분 60000밀리세컽드
+                            var koreanDate = new Date(date.getTime() + koreanOffset);// 기록된시간을 UTC 기준으로 미리세컨드
+
+                            var formattedDate = koreanDate.toISOString().slice(0, 16).replace("T", " ");
+                            small.append(formattedDate);//small요소에 작성일추가
+
+                            timeLineHeading.append(small); //헤드div 안에 small요초추가
+
+                            var timeLineBody = $("<div>").addClass("timeline-body"); // 바디div 생성
+                            timeLineBody.append(response[i].replycontent)// 바디div안에 댓글내용추가
+
+                            timeLinePanel.append(timeLineHeading);                                                            //판낼 div 안에 head랑 body 추가
+                            timeLinePanel.append(timeLineBody);
+
+                            li.append(timeLinePanel);
+
+                            $("#replyUl").append(li);
+                        }
+
+                    },
+                    error: function(error) {
+                        console.log("오류발생");
+                    }
+                });
+        });
+
+
+</script>
 </body>
 
 </html>
