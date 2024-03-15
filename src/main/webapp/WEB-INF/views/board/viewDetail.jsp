@@ -39,14 +39,14 @@
                         </div>
                         <!-- /.panel-body -->
 
-
-                    </div>
-                    <!-- /.panel -->
                     <c:if test="${boardDetail.writer eq username}">
                         <button type="button" class="btn btn-danger"  id="${boardDetail.bno}delete" style="float: right;" onclick="location.href='/board/delete/${boardDetail.bno}';">삭제하기</button>
                         <button type="button" class="btn btn-warning" id="${boardDetail.bno}modify" style="float: right;" onclick="update()">수정하기</button>
                     </c:if>
 
+
+                    </div>
+                    <!-- /.panel -->
                     <sec:authorize access='isAnonymous()'>
                         안녕 로그인 안되면 보여야됨
                     </sec:authorize>
@@ -54,61 +54,6 @@
                     <sec:authorize access='isAuthenticated()'>
                         유저아이디:<sec:authentication property="principal.memberDTO.userName"/> 로그인 되면 보여야회
                     </sec:authorize>
-
-                    <div class="chat-panel panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i> 댓글창
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div id="1번">
-                            <ul class="chat">
-                                <li class="left clearfix">
-                                    <div class="chat-body clearfix" style="width:100%;">
-                                        <div class="header">
-
-                                            <strong class="primary-font">다른사용자</strong>
-                                            <small class="pull-right text-muted">
-                                                작성일시
-                                            </small>
-                                        </div>
-
-                                        <div>
-                                            다른사용자가 단내용
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="right clearfix">
-                                    <div class="chat-body clearfix" style="width:100%;">
-                                        <div class="header" >
-                                            <small class=" text-muted">작성일시</small>
-                                            <strong class="pull-right primary-font">사용자</strong>
-                                        </div>
-                                        <p>
-                                            사용자가 단내용
-                                        </p>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <!-- /.panel-body -->
-
-
-                        <sec:authorize access='isAuthenticated()'>
-                            <div class="panel-footer">
-                                <div class="input-group">
-                                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="댓글내용입력">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-warning btn-sm" id="btn-chat">
-                                            보내기
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                        </sec:authorize>
-                        <!-- /.panel-footer -->
-                    </div>
 
                     <div id="2번">
                         <div class="panel panel-default">
@@ -131,10 +76,9 @@
                                     </li>
                                     <li class="timeline-inverted">
                                         <div class="timeline-panel" style="width:100%">
-                                            <div class="timeline-heading">
+                                            <div class="timeline-heading" style="text-align: right;">
                                                 <small class="text-muted"><i class="fa fa-clock-o"></i> 날짜</small>
                                                 내가쓴글 작성자
-
                                             </div>
                                             <div class="timeline-body">
                                                 ㅇㄹㄹㄹㄹㄹ
@@ -142,6 +86,23 @@
                                         </div>
                                     </li>
                                 </ul>
+
+                                <sec:authorize access='isAuthenticated()'>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="댓글내용입력">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                                    보내기
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </sec:authorize>
+
+
+
+
                             </div>
                             <!-- /.panel-body -->
                         </div>
