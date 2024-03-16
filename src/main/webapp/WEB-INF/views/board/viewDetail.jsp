@@ -63,28 +63,7 @@
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <ul id="replyUl" class="timeline">
-                                    <li>
-                                        <div class="timeline-panel" style="width:100%">
-                                            <div class="timeline-heading">
-                                                작성자이름
-                                                <small class="text-muted"><i class="fa fa-clock-o"></i> 날짜</small>
-                                            </div>
-                                            <div class="timeline-body">
-                                                ㅁㅁㅁㅁ
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!--<li class="timeline-inverted">
-                                        <div class="timeline-panel" style="width:100%">
-                                            <div class="timeline-heading" style="text-align: right;">
-                                                <small class="text-muted"><i class="fa fa-clock-o"></i> 날짜</small>
-                                                내가쓴글 작성자
-                                            </div>
-                                            <div class="timeline-body">
-                                                ㅇㄹㄹㄹㄹㄹ
-                                            </div>
-                                        </div>
-                                    </li>-->
+
                                 </ul>
 
                                 <sec:authorize access='isAuthenticated()'>
@@ -92,7 +71,7 @@
                                         <div class="input-group">
                                             <input id="btn-input" type="text" class="form-control input-sm" placeholder="댓글내용입력">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                                <button class="btn btn-warning btn-sm" id="btn-chat" onclick="replysend()">
                                                     보내기
                                                 </button>
                                             </span>
@@ -169,54 +148,107 @@
 
 
 <script>
-    var ddd = ${boardDetail.bno};
+    var ddd = "${boardDetail.bno}";
+    var eee = "${boardDetail.writer}"; //
+
     document.addEventListener("DOMContentLoaded", function() {
-            $.ajax({
-                    url: '/board/replyList?bno='+ddd,
-                    method: 'get',
-                    success: function(response) {
-                        console.log(response);
-                        for(var i=0; i<response.length; i++){
+        replyList();
+    });
 
-                            var li = $("<li>"); // li 요소
-                            var timeLinePanel = $("<div>").addClass("timeline-panel").css("width", "100%"); //div판낼
-                            var timeLineHeading = $("<div>").addClass("timeline-heading"); //divhead생성
-                            console.log(response[i].replywriter);
+    function replyList(){ //유저 데이터와 리플 데이터 불러오는 함수
+        $.ajax({
+            url: '/board/replyList?bno='+ddd,
+            method: 'get',
+            success: function(response) {
+                console.log(response);
 
-                            timeLineHeading.append(response[i].replywriter); //헤드div 에 작성자 추가
+                $.ajax({
+                        url: '/board/userData',
+                        method: 'get',
+                        success: function(userData) {
+                            console.log(userData);
+                            console.log(userData.userName);
 
-                            var small = $("<small>").addClass("text-muted"); //small? 생성
-                            var clockIcon = $("<i>").addClass("fa fa-clock-o");
-                            small.append(clockIcon);
+                            for(var i=0; i<response.length; i++){
+                                var li = $("<li>"); // li 요소
+                                var timeLinePanel = $("<div>").addClass("timeline-panel").css("width", "100%"); //div판낼
 
-                            var dateString = response[i].replyDate;
-                            var date = new Date(dateString); //기록된시간
+                                if(userData.userName != response[i].replywriter ){
+                                    var timeLineHeading = $("<div>").addClass("timeline-heading"); //divhead생성
+                                }else{
+                                    var timeLineHeading = $("<div>").addClass("timeline-heading").css("text-align", "right"); //divhead생성
+                                }
+                                console.log(response[i].replywriter);
 
-                            var koreanOffset = 9 * 60*60000; // 한국 UTC+9시간 60분 60000밀리세컽드
-                            var koreanDate = new Date(date.getTime() + koreanOffset);// 기록된시간을 UTC 기준으로 미리세컨드
+                                timeLineHeading.append(response[i].replywriter); //헤드div 에 작성자 추가
 
-                            var formattedDate = koreanDate.toISOString().slice(0, 16).replace("T", " ");
-                            small.append(formattedDate);//small요소에 작성일추가
+                                var small = $("<small>").addClass("text-muted"); //small? 생성
+                                var clockIcon = $("<i>").addClass("fa fa-clock-o");
+                                small.append(clockIcon);
 
-                            timeLineHeading.append(small); //헤드div 안에 small요초추가
+                                var dateString = response[i].replyDate;
+                                var date = new Date(dateString); //기록된시간
 
-                            var timeLineBody = $("<div>").addClass("timeline-body"); // 바디div 생성
-                            timeLineBody.append(response[i].replycontent)// 바디div안에 댓글내용추가
+                                var koreanOffset = 9 * 60*60000; // 한국 UTC+9시간 60분 60000밀리세컽드
+                                var koreanDate = new Date(date.getTime() + koreanOffset);// 기록된시간을 UTC 기준으로 미리세컨드
 
-                            timeLinePanel.append(timeLineHeading);                                                            //판낼 div 안에 head랑 body 추가
-                            timeLinePanel.append(timeLineBody);
+                                var formattedDate = koreanDate.toISOString().slice(0, 16).replace("T", " ");
+                                small.append(formattedDate);//small요소에 작성일추가
 
-                            li.append(timeLinePanel);
+                                timeLineHeading.append(small); //헤드div 안에 small요초추가
 
-                            $("#replyUl").append(li);
+                                var timeLineBody = $("<div>").addClass("timeline-body"); // 바디div 생성
+                                timeLineBody.append(response[i].replycontent)// 바디div안에 댓글내용추가
+
+                                if(userData.userName == response[i].replywriter ){
+                                    var btnDiv = $("<div>").css("text-align", "right");
+                                    var updateBtn = $("<button>").addClass("btn btn btn-warning").text("수정").attr("id", response[i].rno+"updateBtn");
+                                    var deleteBtn = $("<button>").addClass("btn btn-danger").text("삭제").attr("id", response[i].rno+"deleteBtn");
+                                    btnDiv.append(updateBtn);
+                                    btnDiv.append(deleteBtn);
+                                    timeLineBody.append(btnDiv);
+                                }
+
+                                timeLinePanel.append(timeLineHeading);                                                            //판낼 div 안에 head랑 body 추가
+                                timeLinePanel.append(timeLineBody);
+
+                                li.append(timeLinePanel);
+
+                                $("#replyUl").append(li);
+                            }
+                        }, //유저정보
+                        error: function(error) {
                         }
+                    });
 
-                    },
-                    error: function(error) {
-                        console.log("오류발생");
-                    }
-                });
+            },   //댓글정보
+            error: function(error) {
+                console.log("오류발생");
+            }
         });
+    }
+
+    function replysend(){
+        var inputReplycontent=$("#btn-input").val();
+
+        $.ajax({
+            url: '/board/replyRegister',
+            method: 'post',
+            data:{
+                bno: '142', // 전송할 데이터 (객체 형태로 전달)
+                replywriter: '리플작성자',
+                replycontent: inputReplycontent,
+                // 추가적인 데이터 필드들
+
+            },
+            success: function(data) {
+                console.log("리플 데이터 잘보냄");
+            },
+            error: function(error) {
+            }
+        });
+
+    }
 
 
 </script>
