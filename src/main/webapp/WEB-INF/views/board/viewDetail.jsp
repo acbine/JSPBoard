@@ -70,6 +70,7 @@
                                     <div class="panel-footer">
                                         <div class="input-group">
                                             <input id="btn-input" type="text" class="form-control input-sm" placeholder="댓글내용입력">
+                                            <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-warning btn-sm" id="btn-chat" onclick="replysend()">
                                                     보내기
@@ -78,10 +79,6 @@
                                         </div>
                                     </div>
                                 </sec:authorize>
-
-
-
-
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -152,7 +149,7 @@
     var eee = "${boardDetail.writer}"; //
 
     document.addEventListener("DOMContentLoaded", function() {
-        replyList();
+        //replyList();
     });
 
     function replyList(){ //유저 데이터와 리플 데이터 불러오는 함수
@@ -228,16 +225,39 @@
         });
     }
 
+    function userDatar(){
+        $.ajax({
+        url: '/board/userData',
+        method: 'get',
+        success: function(userData) {
+            //console.log(userData);
+            //console.log(userData.userName);
+        },
+            error: function(error) {
+            }
+        });
+    }
+
     function replysend(){
         var inputReplycontent=$("#btn-input").val();
+        var loginUserName=$("#btn-input").val();
+        var csrfToken=$("#csrfToken").val();
+        //console.log(csrfToken);
 
         $.ajax({
             url: '/board/replyRegister',
             method: 'post',
+            beforeSend: function(ldddsds) {
+
+                userDatar().then(function(userData) {
+                            console.log(userData);
+                        });
+            },
             data:{
                 bno: '142', // 전송할 데이터 (객체 형태로 전달)
                 replywriter: '리플작성자',
                 replycontent: inputReplycontent,
+                _csrf:csrfToken,
                 // 추가적인 데이터 필드들
 
             },
@@ -249,6 +269,8 @@
         });
 
     }
+
+
 
 
 </script>
