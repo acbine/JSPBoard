@@ -1,7 +1,5 @@
 package board.study.controller;
 
-import board.study.boardDTO.PageDTO;
-import board.study.boardDTO.PagebarDTO;
 import board.study.boardDTO.ReplyDTO;
 import board.study.memberDTO.MemberDTO;
 import board.study.service.ReplyService;
@@ -10,7 +8,7 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,5 +54,12 @@ public class BoardReplyController {
     public void replyRegister(ReplyDTO replyDTO){
         log.info(replyDTO);
         replyService.boardServiceRegister(replyDTO);
+    }
+
+    @PostMapping("/board/replyDelete")
+    public void replyDelete(Long rno){
+        log.info("삭제신호 받으");
+        log.info(rno);
+        replyService.boardReplyDelete(rno);
     }
 }

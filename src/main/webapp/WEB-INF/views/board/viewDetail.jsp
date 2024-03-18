@@ -149,7 +149,7 @@
     var eee = "${boardDetail.writer}"; //
 
     document.addEventListener("DOMContentLoaded", function() {
-        replyList();
+        refreshReplyList();
     });
 
     function replyList(){ //유저 데이터와 리플 데이터 불러오는 함수
@@ -161,8 +161,8 @@
                         url: '/board/userData',
                         method: 'get',
                         success: function(userData) {
-                            console.log(userData);
-                            console.log(userData.userName);
+                            //console.log(userData);
+                            //console.log(userData.userName);
 
                             for(var i=0; i<response.length; i++){
                                 var li = $("<li>"); // li 요소
@@ -173,7 +173,7 @@
                                 }else{
                                     var timeLineHeading = $("<div>").addClass("timeline-heading").css("text-align", "right"); //divhead생성
                                 }
-                                console.log(response[i].replywriter);
+                                //console.log(response[i]);
 
                                 timeLineHeading.append(response[i].replywriter); //헤드div 에 작성자 추가
 
@@ -199,8 +199,27 @@
                                     var btnDiv = $("<div>").css("text-align", "right");
                                     var updateBtn = $("<button>").addClass("btn btn btn-warning").text("수정").attr("id", response[i].rno+"updateBtn");
                                     var deleteBtn = $("<button>").addClass("btn btn-danger").text("삭제").attr("id", response[i].rno+"deleteBtn");
+
+                                    updateBtn.on("click", function() {
+                                        var click = event.target;
+                                        console.log(click.getAttribute('id')+"수정 버튼클릭");
+                                    });
+
+                                    deleteBtn.on("click", function() {
+                                        var click = event.target;
+                                        console.log(click.getAttribute('id')+"삭제버튼클릭");
+                                        var clickDeleteID = click.getAttribute('id');
+                                        var splitID = clickDeleteID.split("deleteBtn");
+                                        console.log(clickDeleteID.split("deleteBtn"));//무한루프걸림
+
+                                        replyDelete(splitID[0]);
+
+
+                                    });
+
                                     btnDiv.append(updateBtn);
                                     btnDiv.append(deleteBtn);
+
                                     timeLineBody.append(btnDiv);
                                 }
 
@@ -242,6 +261,7 @@
                             _csrf:csrfToken
                         },
                         success: function(data) {
+                            $("#btn-input").val("");
                             refreshReplyList();
                         },
                         error: function(error) {
@@ -257,6 +277,24 @@
 function refreshReplyList() { //ajax를통해 새로고침
     $("#replyUl").empty(); //삭제하고
     replyList();   //다시만듬
+}
+
+function replyDelete(rno,csrfToken){
+    var csrfToken=$("#csrfToken").val();
+    console.log("ajax있는 삭제 발생"+rno);
+    $.ajax({
+        url: '/board/replyDelete?rno='+rno,
+        method: 'post',
+        data:{
+            _csrf:csrfToken
+        },
+        success: function(detetdata) {
+            refreshReplyList();
+            console.log("삭제 신호 잘보낸 ");
+        },
+        error: function(error) {
+        }
+    });
 }
 
 
