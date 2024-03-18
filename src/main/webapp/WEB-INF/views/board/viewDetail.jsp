@@ -223,7 +223,7 @@
         });
     }
 
-    function replysend(){
+    function replysend(){ // 댓글 전송
         var inputReplycontent=$("#btn-input").val();
         var csrfToken=$("#csrfToken").val();
 
@@ -242,23 +242,22 @@
                             _csrf:csrfToken
                         },
                         success: function(data) {
-                            replyList();
+                            refreshReplyList();
                         },
                         error: function(error) {
                         }
                     });
-
                 },
                 error: function(error) {
-
                 }
-
         });
-
 
     }
 
-
+function refreshReplyList() { //ajax를통해 새로고침
+    $("#replyUl").empty(); //삭제하고
+    replyList();   //다시만듬
+}
 
 
 </script>
