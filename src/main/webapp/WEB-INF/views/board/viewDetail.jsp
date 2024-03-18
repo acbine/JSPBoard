@@ -149,7 +149,7 @@
     var eee = "${boardDetail.writer}"; //
 
     document.addEventListener("DOMContentLoaded", function() {
-        //replyList();
+        replyList();
     });
 
     function replyList(){ //유저 데이터와 리플 데이터 불러오는 함수
@@ -157,8 +157,6 @@
             url: '/board/replyList?bno='+ddd,
             method: 'get',
             success: function(response) {
-                console.log(response);
-
                 $.ajax({
                         url: '/board/userData',
                         method: 'get',
@@ -225,48 +223,38 @@
         });
     }
 
-    function userDatar(){
-        $.ajax({
-        url: '/board/userData',
-        method: 'get',
-        success: function(userData) {
-            //console.log(userData);
-            //console.log(userData.userName);
-        },
-            error: function(error) {
-            }
-        });
-    }
-
     function replysend(){
         var inputReplycontent=$("#btn-input").val();
-        var loginUserName=$("#btn-input").val();
         var csrfToken=$("#csrfToken").val();
-        //console.log(csrfToken);
 
         $.ajax({
-            url: '/board/replyRegister',
-            method: 'post',
-            beforeSend: function(ldddsds) {
+                url: '/board/userData',
+                method: 'get',
+                success: function(userData) {
+                    //console.log(ddd);
+                    $.ajax({
+                        url: '/board/replyRegister',
+                        method: 'post',
+                        data:{
+                            bno: ddd, // 전송할 데이터 (객체 형태로 전달)
+                            replywriter: userData.userName,
+                            replycontent: inputReplycontent,
+                            _csrf:csrfToken
+                        },
+                        success: function(data) {
+                            replyList();
+                        },
+                        error: function(error) {
+                        }
+                    });
 
-                userDatar().then(function(userData) {
-                            console.log(userData);
-                        });
-            },
-            data:{
-                bno: '142', // 전송할 데이터 (객체 형태로 전달)
-                replywriter: '리플작성자',
-                replycontent: inputReplycontent,
-                _csrf:csrfToken,
-                // 추가적인 데이터 필드들
+                },
+                error: function(error) {
 
-            },
-            success: function(data) {
-                console.log("리플 데이터 잘보냄");
-            },
-            error: function(error) {
-            }
+                }
+
         });
+
 
     }
 

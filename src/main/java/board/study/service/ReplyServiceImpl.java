@@ -24,8 +24,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public void boardReplyUpdate(ReplyDTO ReplyDTO) {
-		replyMapper.boardReplyUpdate(ReplyDTO);
+	public void boardReplyUpdate(ReplyDTO replyDTO) {
+		replyMapper.boardReplyUpdate(replyDTO);
 	}
 
 	@Override

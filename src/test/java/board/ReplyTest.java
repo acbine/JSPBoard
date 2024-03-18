@@ -2,6 +2,7 @@ package board;
 
 import board.study.boardDTO.ReplyDTO;
 import board.study.mapper.ReplyMapper;
+import board.study.service.ReplyServiceImpl;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml","file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 @Log4j
 public class ReplyTest {
+
+    @Autowired
+    ReplyServiceImpl replyService;
 
     @Autowired
     ReplyMapper replyMapper;
@@ -43,4 +47,15 @@ public class ReplyTest {
     public void replyListTest(){
         log.info(replyMapper.boardReplyList(142L));
     }
+
+    @Test
+    public void replyregserviceTest(){
+        ReplyDTO replyDTO = new ReplyDTO();
+        replyDTO.setBno(142L);
+        replyDTO.setReplywriter("서비스테스트");
+        replyDTO.setReplycontent("ㅇㅇㅇㅇ");
+        replyService.boardServiceRegister(replyDTO);
+    }
+
+
 }

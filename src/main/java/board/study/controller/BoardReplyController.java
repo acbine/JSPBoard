@@ -55,6 +55,6 @@ public class BoardReplyController {
     @PostMapping("/board/replyRegister")
     public void replyRegister(ReplyDTO replyDTO){
         log.info(replyDTO);
-
+        replyService.boardServiceRegister(replyDTO);
     }
 }
