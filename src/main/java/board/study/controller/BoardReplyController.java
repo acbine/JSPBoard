@@ -62,4 +62,11 @@ public class BoardReplyController {
         log.info(rno);
         replyService.boardReplyDelete(rno);
     }
+
+    @PostMapping("/board/replyUpdate")
+    public void replyDelete(ReplyDTO replyDTO){
+        log.info("수정신호받음");
+        log.info(replyDTO);
+        replyService.boardReplyUpdate(replyDTO);
+    }
 }

@@ -132,12 +132,13 @@
             $("#${boardDetail.bno}delete").replaceWith("<button type='button' class='btn btn-success'  id='${boardDetail.bno}cancel' onclick='cancel()' style='float: right;'>취소</button>");
             $("#${boardDetail.bno}modify").replaceWith("<button type='button' class='btn btn-info'  id='${boardDetail.bno}send' onclick='send()' style='float: right;'>수정완료</button>");
     }
-
+    //게시글용 스크립트 끝
 </script>
 
 
 
 <script>
+    //댓글용 스크립트 시작
     var ddd = "${boardDetail.bno}";
     var eee = "${boardDetail.writer}"; //
 
@@ -202,11 +203,13 @@
                                         console.log(clickUpdate.getAttribute('id')+"수정 버튼클릭");
 
                                         var clickUpdateID = clickUpdate.getAttribute('id');
-                                        var splitUpdateID = clickUpdateID.split("UpdateBtn");
+                                        var splitUpdateID = clickUpdateID.split("updateBtn");
 
 
                                         console.log(splitUpdateID[0]+"아이디는?");
-                                        $("#"+splitUpdateID[0]+"div").replaceWith("<input type='text' id="+splitUpdateID[0]+"input>");
+
+                                        changInputBox(splitUpdateID[0])
+                                        //$("#"+splitUpdateID[0]+"div").replaceWith("<input type='text' id="+splitUpdateID[0]+"input>");
 
 
 
@@ -256,7 +259,6 @@
     function replysend(){ // 댓글 전송
         var inputReplycontent=$("#btn-input").val();
         var csrfToken=$("#csrfToken").val();
-
         $.ajax({
                 url: '/board/userData',
                 method: 'get',
@@ -282,15 +284,14 @@
                 error: function(error) {
                 }
         });
-
     }
 
-function refreshReplyList() { //ajax를통해 새로고침
+function refreshReplyList() { //댓글을 새로고침하는 함수
     $("#replyUl").empty(); //삭제하고
     replyList();   //다시만듬
 }
 
-function replyDelete(rno,csrfToken){
+function replyDelete(rno,csrfToken){ //댓글을 삭제하는 함수
     var csrfToken=$("#csrfToken").val();
     console.log("ajax있는 삭제 발생"+rno);
     $.ajax({
@@ -308,17 +309,40 @@ function replyDelete(rno,csrfToken){
     });
 }
 
-/*
 function changInputBox(upDateRno){ //클릭된것
     console.log(upDateRno+"div을 input으로 바꾸는 함수 실행됨");
-    $("#"+upDateRno+"div").replaceWith("<input type='text' id="+upDateRno+"input>");
-
+    $("#"+upDateRno+"div").replaceWith("<input type='text' id="+upDateRno+"input requierd>");
+    $("#"+upDateRno+"updateBtn").replaceWith("<button type='button' class='btn btn-info'  id='"+upDateRno+"replySend' onclick='replyUpdateSend("+upDateRno+")' '>수정완료</button>");
+    $("#"+upDateRno+"deleteBtn").replaceWith("<button type='button' class='btn btn-success'  id='"+upDateRno+"replyCancel' onclick='replyCancel("+upDateRno+")' '>취소</button>");
 }
 
-$(document).on("click", "#"+upDateRno+"div", function() {
+function replyUpdateSend(upDateRno){
+    var csrfToken=$("#csrfToken").val(); // 토큰 값이 비워졌더니 무한루프 발생
+    var updatedReply = $("#"+upDateRno+"input").val();
+    console.log("댓글수정한내용"+updatedReply); //잘됨
+    $.ajax({
+        url: '/board/replyUpdate',
+        method: 'post',
+        data:{
+            rno: upDateRno, // 전송할 데이터 (객체 형태로 전달)
+            replycontent: updatedReply,
+            _csrf:csrfToken
+        },
+        success: function(data) {
+            refreshReplyList();
+        },
+        error: function(error) {
+        }
+    });
+}
 
-});
-*/
+
+function replyCancel(upDateRno){
+    console.log("댓글취소");
+    refreshReplyList();
+}
+
+
 
 
 
