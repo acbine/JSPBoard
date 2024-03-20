@@ -68,7 +68,7 @@
 
                     <li>
                         <form action="/logout" method="post">
-                            <input id="csrfToken"type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
+                            <input id="csrfToken"type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
                             <button class="btn btn-default" type="submit">로그아웃</button>
                         </form>
                     </li>

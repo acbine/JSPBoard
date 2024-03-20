@@ -47,13 +47,6 @@
 
                     </div>
                     <!-- /.panel -->
-                    <sec:authorize access='isAnonymous()'>
-                        안녕 로그인 안되면 보여야됨
-                    </sec:authorize>
-
-                    <sec:authorize access='isAuthenticated()'>
-                        유저아이디:<sec:authentication property="principal.memberDTO.userName"/> 로그인 되면 보여야회
-                    </sec:authorize>
 
                     <div id="2번">
                         <div class="panel panel-default">
@@ -70,7 +63,7 @@
                                     <div class="panel-footer">
                                         <div class="input-group">
                                             <input id="btn-input" type="text" class="form-control input-sm" placeholder="댓글내용입력">
-                                            <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-warning btn-sm" id="btn-chat" onclick="replysend()">
                                                     보내기
@@ -193,7 +186,10 @@
                                 timeLineHeading.append(small); //헤드div 안에 small요초추가
 
                                 var timeLineBody = $("<div>").addClass("timeline-body"); // 바디div 생성
-                                timeLineBody.append(response[i].replycontent)// 바디div안에 댓글내용추가
+                                var replyContentDiv = $("<div>").attr("id", response[i].rno+"div");
+
+                                timeLineBody.append(replyContentDiv)// 바디div안에 contentDiv추가
+                                replyContentDiv.append(response[i].replycontent)// 리플div안에 댓글내용추가
 
                                 if(userData.userName == response[i].replywriter ){
                                     var btnDiv = $("<div>").css("text-align", "right");
@@ -201,8 +197,23 @@
                                     var deleteBtn = $("<button>").addClass("btn btn-danger").text("삭제").attr("id", response[i].rno+"deleteBtn");
 
                                     updateBtn.on("click", function() {
-                                        var click = event.target;
-                                        console.log(click.getAttribute('id')+"수정 버튼클릭");
+                                        var clickUpdate = event.target;
+
+                                        console.log(clickUpdate.getAttribute('id')+"수정 버튼클릭");
+
+                                        var clickUpdateID = clickUpdate.getAttribute('id');
+                                        var splitUpdateID = clickUpdateID.split("UpdateBtn");
+
+
+                                        console.log(splitUpdateID[0]+"아이디는?");
+                                        $("#"+splitUpdateID[0]+"div").replaceWith("<input type='text' id="+splitUpdateID[0]+"input>");
+
+
+
+
+
+
+                                        console.log("완료");
                                     });
 
                                     deleteBtn.on("click", function() {
@@ -296,6 +307,19 @@ function replyDelete(rno,csrfToken){
         }
     });
 }
+
+/*
+function changInputBox(upDateRno){ //클릭된것
+    console.log(upDateRno+"div을 input으로 바꾸는 함수 실행됨");
+    $("#"+upDateRno+"div").replaceWith("<input type='text' id="+upDateRno+"input>");
+
+}
+
+$(document).on("click", "#"+upDateRno+"div", function() {
+
+});
+*/
+
 
 
 </script>
