@@ -59,14 +59,14 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right" style="padding: 8px;">
 
                 <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')">
-                    <li>
+                    <li >
                         유저이름: <sec:authentication property="principal.memberDTO.userName" />
                     </li>
 
-                    <li>
+                    <li >
                         <form action="/logout" method="post">
                             <input id="csrfToken"type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
                             <button class="btn btn-default" type="submit">로그아웃</button>
@@ -75,134 +75,14 @@
                 </sec:authorize>
 
                 <sec:authorize access='isAnonymous()'>
-                    <li>
-                        <button class="btn btn-default" onclick="window.location.href='/board/loginPage'">로그인</button>
+                    <li >
+                        <button class="btn btn-default" onclick="window.location.href='/board/loginPage'" style="display: block;">로그인</button>
                     </li>
                 </sec:authorize>
 
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="/resource/pages/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
+
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="/resources/pages/index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/resources/pages/flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="/resources/pages/morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="/resources/pages/tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="/resources/pages/forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/resources/pages/panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="/resources/pages/buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="/resources/pages/notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="/resources/pages/typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="/resources/pages/icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="/resources/pages/grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/resources/pages/blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="/resources/pages/login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
+
         </nav>

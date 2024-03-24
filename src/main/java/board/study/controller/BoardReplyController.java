@@ -53,7 +53,11 @@ public class BoardReplyController {
     @PostMapping("/board/replyRegister")
     public void replyRegister(ReplyDTO replyDTO){
         log.info(replyDTO);
-        replyService.boardServiceRegister(replyDTO);
+        try {
+            replyService.boardServiceRegister(replyDTO);
+        }catch (Exception exception){
+
+        }
     }
 
     @PostMapping("/board/replyDelete")
@@ -67,6 +71,10 @@ public class BoardReplyController {
     public void replyDelete(ReplyDTO replyDTO){
         log.info("수정신호받음");
         log.info(replyDTO);
-        replyService.boardReplyUpdate(replyDTO);
+        try {
+            replyService.boardReplyUpdate(replyDTO);
+        }catch (Exception exception){
+
+        }
     }
 }

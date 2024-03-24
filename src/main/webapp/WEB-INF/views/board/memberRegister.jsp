@@ -50,15 +50,15 @@
                         <div class="form-group">
                             <form action="/board/membership" method="post">
                                 <label>로그인 아이디</label>
-                                <input class="form-control" name="userid"  placeholder="아이디를 입력해주세요" required><br>
-
+                                <input class="form-control" name="userid"  placeholder="아이디를 입력해주세요" required>
+                                ${error}<br>
                                 <label>비밀번호</label>
                                 <input class="form-control" name="userpw" placeholder="비밀번호를 입력해주세요" required><br>
 
                                 <label>유저이름</label>
                                 <input class="form-control" name="userName" placeholder="유저이름을 입력해주세요" required><br>
-                                <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/><br>
-                                ${error}
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/><br>
+
                                 <div style="text-align: center;">
                                     <button class="btn btn-default" type="submit">등록</button><br>
                                 </div>

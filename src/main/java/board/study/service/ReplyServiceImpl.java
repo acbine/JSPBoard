@@ -27,7 +27,6 @@ public class ReplyServiceImpl implements ReplyService {
 	public void boardReplyUpdate(ReplyDTO replyDTO) {
 		replyMapper.boardReplyUpdate(replyDTO);
 	}
-
 	@Override
 	public void boardReplyDelete(Long rno) {
 		replyMapper.boardReplyDelete(rno);

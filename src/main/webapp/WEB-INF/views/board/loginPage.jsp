@@ -57,13 +57,16 @@
                                 </div>
 
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value ="로그인"/>
-                                <input type="text" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
-                                ${error}
-                                <a href="/board/memberRegister">회원가입</a>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" readonly/>
                             </fieldset>
                         </form>
-                        <h3>${error}</h3>
-                        <h3>${logout}</h3>
+                        <div style="text-align : right;">
+                            <a href="/board/memberRegister" >회원가입</a><br>
+                        </div>
+                        <span style=" display: block; text-align : center;">
+                            ${error}
+                            ${logout}
+                        </span>
                     </div>
                 </div>
             </div>
