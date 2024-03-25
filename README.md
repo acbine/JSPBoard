@@ -1,1 +1,16 @@
-JSP보드 연습
+# Spring-Board-Project 
+
+## 프로젝트 소개
+CRUD기반의 간단한 게시판 프로젝트입니다.
+
+## 개발기간 
+24.02.4주차~24.03.3주차
+
+### 개발환경
+
+- Java 11
+- IDE : IntelliJ
+- FrameWork : Spring
+- DataBase : Oracle 21c
+- ORM : Mybatis
+
