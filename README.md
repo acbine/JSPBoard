@@ -14,3 +14,9 @@ CRUD기반의 간단한 게시판 프로젝트입니다.
 - DataBase : Oracle 21c
 - ORM : Mybatis
 
+
+### 주요기능
+
+<details>
+  <summary>게시글보여주기</summary>
+</details>
