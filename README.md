@@ -20,12 +20,15 @@
 
 ### 주요기능
 
+![스크린샷 2024-04-11 191713](https://github.com/acbine/JSPBoard/assets/145634613/d1d3d29e-5171-4cef-b493-4141bbfe535a)
+메인화면
+
 <details>
   <summary>1.로그인 및 회원가입</summary>
 </details>
 
 <details>
-  <summary>2. 게시글 목록보기 </summary>
+  <summary>2. 게시글 목록 및 페이지 처리 및 검색 기능 </summary>
 </details>
 
 <details>
@@ -33,13 +36,9 @@
 </details>
 
 <details>
-  <summary>4. 게시글 페이지 처리 및 검색 기능</summary>
+  <summary>5.게시글 상세보기 </summary>
 </details>
 
 <details>
-  <summary>6.게시글 상세보기 </summary>
-</details>
-
-<details>
-  <summary>7.댓글 목록 및 댓글 수정,삭제</summary>
+  <summary>6.댓글 목록 및 댓글 수정,삭제</summary>
 </details>
