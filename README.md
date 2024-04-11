@@ -32,13 +32,13 @@
 </details>
 
 <details>
-  <summary>3. 게시글 작성 및 수정 삭제</summary>
+  <summary>3. 게시글 작성 </summary>
 </details>
 
 <details>
-  <summary>5.게시글 상세보기 </summary>
+  <summary>4.게시글 상세보기 및 수정 삭제 </summary>
 </details>
 
 <details>
-  <summary>6.댓글 목록 및 댓글 수정,삭제</summary>
+  <summary>5.댓글 목록 및 댓글 수정,삭제</summary>
 </details>
