@@ -46,9 +46,8 @@
   <img src="https://github.com/acbine/JSPBoard/assets/145634613/59767a1b-5e07-4ea8-b826-fe42107669f1">
 </details>
 
-
 <details>
   <summary>5.댓글 목록 및 댓글 수정,삭제</summary>
-  
+   <img src="https://github.com/acbine/JSPBoard/assets/145634613/481ed70d-d511-4816-8948-33622ae32756">
 </details>
 
