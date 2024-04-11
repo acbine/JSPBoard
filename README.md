@@ -27,12 +27,13 @@
 
 <details>
   <summary>1.로그인 및 회원가입</summary>
-![JSPBoard-Chrome2024-04-1120-21-14online-video-cutter com-ezgif com-video-to-gif-converter](https://github.com/acbine/JSPBoard/assets/145634613/f0bcd8e2-126a-4e9c-9c0e-f79eea3c8026)  
+![JSPBoard-Chrome2024-04-1120-21-14online-video-cutter com-ezgif com-video-to-gif-converter](https://github.com/acbine/JSPBoard/assets/145634613/f0bcd8e2-126a-4e9c-9c0e-f79eea3c8026)
+  <img src="https://github.com/acbine/JSPBoard/assets/145634613/43dbe641-10bf-47c7-9a9c-960cec1ea9dd">
 </details>
 
 <details>
   <summary>2. 게시글 목록 및 페이지 처리 및 검색 기능 </summary>
-![serarchonline-video-cutter com2-ezgif com-video-to-gif-converter](https://github.com/acbine/JSPBoard/assets/145634613/bed6aec1-0cf1-4947-846d-8c34865dc8e0)
+  <img src="https://github.com/acbine/JSPBoard/assets/145634613/bed6aec1-0cf1-4947-846d-8c34865dc8e0">
 </details>
 
 <details>
