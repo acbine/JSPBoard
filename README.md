@@ -17,7 +17,7 @@
 - DataBase : Oracle 21c
 - ORM : Mybatis
 
-  배포 서비스 X
+  배포 X
 
 
 ### 주요기능
