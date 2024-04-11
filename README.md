@@ -31,6 +31,7 @@
 
 <details>
   <summary>2. 게시글 목록 및 페이지 처리 및 검색 기능 </summary>
+![serarchonline-video-cutter com2-ezgif com-video-to-gif-converter](https://github.com/acbine/JSPBoard/assets/145634613/bed6aec1-0cf1-4947-846d-8c34865dc8e0)
 </details>
 
 <details>
@@ -40,6 +41,7 @@
 <details>
   <summary>4.게시글 상세보기 및 수정 삭제 </summary>
 </details>
+
 
 <details>
   <summary>5.댓글 목록 및 댓글 수정,삭제</summary>
