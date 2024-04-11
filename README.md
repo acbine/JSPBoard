@@ -33,12 +33,12 @@
 
 <details>
   <summary>2. 게시글 목록 및 페이지 처리 및 검색 기능 </summary>
-  
+   <img src="https://github.com/acbine/JSPBoard/assets/145634613/2a179c05-f4c5-48d0-9f5b-f996b410f93f">
 </details>
 
 <details>
   <summary>3. 게시글 작성 </summary>
-  
+  <img src="https://github.com/acbine/JSPBoard/assets/145634613/61d9a2d7-b4e8-4946-a5b6-e05838f49995">
 </details>
 
 <details>
