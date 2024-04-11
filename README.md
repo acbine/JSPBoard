@@ -28,25 +28,29 @@
 <details>
   <summary>1.로그인 및 회원가입</summary>
   
-  <img src="https://github.com/acbine/JSPBoard/assets/145634613/24037903-6dc3-43b0-85ac-6c58870e06aa">
+  <img src="https://github.com/acbine/JSPBoard/assets/145634613/885d4ba7-0470-4ae7-80b1-5a576f88a944">
 </details>
 
 <details>
   <summary>2. 게시글 목록 및 페이지 처리 및 검색 기능 </summary>
-  <img src="https://github.com/acbine/JSPBoard/assets/145634613/bed6aec1-0cf1-4947-846d-8c34865dc8e0">
+  
 </details>
 
 <details>
   <summary>3. 게시글 작성 </summary>
+  
 </details>
 
 <details>
 
   <summary>4.게시글 상세보기 및 수정 삭제 </summary>
+  
 </details>
 
 
 <details>
   <summary>5.댓글 목록 및 댓글 수정,삭제</summary>
+  
 </details>
+
 
