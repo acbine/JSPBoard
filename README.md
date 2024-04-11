@@ -27,8 +27,8 @@
 
 <details>
   <summary>1.로그인 및 회원가입</summary>
-![JSPBoard-Chrome2024-04-1120-21-14online-video-cutter com-ezgif com-video-to-gif-converter](https://github.com/acbine/JSPBoard/assets/145634613/f0bcd8e2-126a-4e9c-9c0e-f79eea3c8026)
-  <img src="https://github.com/acbine/JSPBoard/assets/145634613/43dbe641-10bf-47c7-9a9c-960cec1ea9dd">
+  
+  <img src="https://github.com/acbine/JSPBoard/assets/145634613/24037903-6dc3-43b0-85ac-6c58870e06aa">
 </details>
 
 <details>
@@ -49,3 +49,4 @@
 <details>
   <summary>5.댓글 목록 및 댓글 수정,삭제</summary>
 </details>
+
