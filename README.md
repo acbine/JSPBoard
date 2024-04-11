@@ -21,9 +21,8 @@
 
 
 ### 주요기능
-
-![스크린샷 2024-04-11 191713](https://github.com/acbine/JSPBoard/assets/145634613/d1d3d29e-5171-4cef-b493-4141bbfe535a)
 메인화면
+![스크린샷 2024-04-11 191713](https://github.com/acbine/JSPBoard/assets/145634613/d1d3d29e-5171-4cef-b493-4141bbfe535a)
 
 <details>
   <summary>1.로그인 및 회원가입</summary>
